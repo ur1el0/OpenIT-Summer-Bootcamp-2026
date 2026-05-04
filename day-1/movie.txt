@@ -1,0 +1,87 @@
+Scenario: Build a REST API for a Movie Watchlist (title, year, genre, watched: bool, rating: float)
+1. Design 6+ endpoints using correct HTTP verbs (Level 2):
+GET /movies
+GET /movies/{id}
+POST /movies
+PUT /movies/{id} DELETE /movies/{id} GET
+2. For GET /movies — add query parameter support:
+?genre=action & ?watched=false & ?sort=rating&order=desc & ?page=1&size=5
+3. Explain the difference between GET /movies/5 and GET
+When should you use each? (discuss with a classmate)
+4. Add a HATEOAS _links section to GET /movies/{id} with at least 5 links
+5. What HTTP status codes would you return for:
+Successful creation? Resource not found? Validation error?
+
+
+
+1. 
+GET /movies/
+GET /movies/{id}
+POST /movies/
+POST /movies/{id}
+PUT /movies/{id}
+DELETE /movies/{id}
+GET /movies/{id}/reviews
+
+
+2. 
+GET /movies?genre=romance&?rating=6&?author=Kurt%20Laja
+GET /movies?title=The%20Notebook
+
+
+3. 
+The difference between GET /movies/5 and GET /movies?id=5 is that the first one is a path parameter endpoint and the latter one is an endpoint supported with query parameters
+
+4. 
+{
+    "id": 1,
+    "title": "The Notebook",
+    "year": "2001",
+    "genre": "romance",
+    "casts": ["mike", "kurt"],
+    "watched": true,
+    "rating": 6.7,
+    "_links": {
+        "directors": {
+            "href": "/movies/{id}/directors",
+            "method": "GET"
+        },
+        "collection": {
+            "href": "/movies",
+            "method": "GET"
+        },
+        "reviews": {
+            "href": "/movies/{id}/reviews/",
+            "method": "GET"
+        },
+        "watch": {
+            "href":" /movies/{id},
+            "method": "GET"
+        },
+        "casts": {
+            "href": "/movies/{id}/casts",
+            "method": "GET"
+        }
+        "review": {
+            "href": "/movies/{id}/,
+            "method": "POST"
+        }
+        "update": {
+            "href": "/movies/{id}",
+            "method": "PUT"
+        },
+        "delete": {
+            "href": "/movies/{id}",
+            "method": "DELETE"
+        }
+    }
+}
+
+
+
+5. 
+200 OK
+201 Created
+
+404 Not Found
+405 Method not allowed

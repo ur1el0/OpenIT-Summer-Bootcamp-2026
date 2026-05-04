@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://example.com/library">
+    <book>
+        <id>1</id>
+        <title>the great asdas</title>
+        <authors>
+            <author>mike gomez</author>
+        </authors>
+        <published_year>123</published_year>
+        <available>true</available>
+        <genres>
+            <genre>asd</genre>
+            <genre>asd</genre>
+        </genres>
+        <publisher>
+            <name>asdsad</name>
+            <city>asdsd</city>
+        </publisher>
+    </book>
+</library> 

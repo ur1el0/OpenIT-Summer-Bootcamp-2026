@@ -1,0 +1,55 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+     "type": "object",
+     "required": ["id", "title", "authors", "published_year","available", "genres", "publisher"],
+     "properties": 
+     {
+        "id": 
+        {
+            "type": "integer"
+        },
+        "title": 
+        {   
+            "type": "string"
+        },
+        "authors": 
+        {
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            }
+        },
+        "published_year": 
+        {
+            "type" : "integer"
+        },
+        "available": 
+        {
+            "type": "boolean"
+        },
+        "genres" : 
+        {
+            "type" : "array",
+            "items": 
+            {
+                "type": "string"
+            }
+        },
+        "publisher": 
+        {
+            "type": "object",
+            "properties": 
+            {
+                "name": 
+                {
+                    "type": "string"
+                },
+                "city": 
+                {
+                    "type" : "string"
+                }
+            }
+        }
+    }
+}
