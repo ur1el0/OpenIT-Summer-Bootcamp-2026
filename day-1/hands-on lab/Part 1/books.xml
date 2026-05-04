@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://example.com/library">
+    <book>
+        <id>1</id>
+        <title>Harry Potter and the Sorcerer's Stone</title>
+        <authors>
+            <author>J.K. Rowling</author>
+        </authors>
+        <published_year>1997</published_year>
+        <available>true</available>
+        <genres>
+            <genre>Fantasy</genre>
+            <genre>Adventure</genre>
+        </genres>
+        <publisher>
+            <name>Bloomsbury</name>
+            <city>London</city>
+        </publisher>
+    </book>
+    <book>
+        <id>2</id>
+        <title>The Hobbit</title>
+        <authors>
+            <author>J.R.R Tolkien</author>
+        </authors>
+        <published_year>1937</published_year>
+        <available>false</available>
+        <genres>
+            <genre>Fantasy</genre>
+            <genre>Classic</genre>
+        </genres>
+        <publisher>
+            <name>George Allen &amp; Unwin</name>
+            <city>London</city>
+        </publisher>
+    </book>
+    <book>
+        <id>3</id>
+        <title>To Kill a Mockingbird</title>
+        <authors>
+            <author>Harper Lee</author>
+        </authors>
+        <published_year>1960</published_year>
+        <available>true</available>
+        <genres>
+            <genre>Fiction</genre>
+            <genre>Classic</genre>
+        </genres>
+        <publisher>
+            <name>J.B. Lippincott &amp; Co.</name>
+            <city>Philadelphia</city>
+        </publisher>
+    </book>
+    <book>
+        <id>4</id>
+        <title>1984</title>
+        <authors>
+            <author>George Orwell</author>
+        </authors>
+        <published_year>1949</published_year>
+        <available>true</available>
+        <genres>
+            <genre>Dystopian</genre>
+            <genre>Science Fiction</genre>
+        </genres>
+        <publisher>
+            <name>Secker &amp; Warburg</name>
+            <city>London</city>
+        </publisher>
+    </book>
+    <book>
+        <id>5</id>
+        <title>Pride and Prejudice</title>
+        <authors>
+            <author>Jane Austen</author>
+        </authors>
+        <published_year>1813</published_year>
+        <available>false</available>
+        <genres>
+            <genre>Romance</genre>
+            <genre>Classic</genre>
+        </genres>
+        <publisher>
+            <name>T. Egerton</name>
+            <city>London</city>
+        </publisher>
+    </book>
+</library> 

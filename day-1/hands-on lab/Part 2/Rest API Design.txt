@@ -1,0 +1,13 @@
+GET /books
+GET /books/{id}
+GET /books/{id}/authors
+GET /book/{id}/authors/{id}
+POST /books
+PUT /books/{id}
+PATCH /books/{id}
+DELETE /books/{id}
+
+?genre=romance
+?rating=6
+?author=Kurt%20Laja
+?title=The%20Notebook

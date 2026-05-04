@@ -1,0 +1,217 @@
+[
+    {
+        "id": 1,
+        "title": "The Notebook",
+        "year": 2001,
+        "genre": "romance",
+        "casts": ["Ryan Gosling", "Rachel McAdams"],
+        "watched": true,
+        "rating": 6.7,
+        "_links": {
+            "directors": {
+                "href": "/movies/1/directors",
+                "method": "GET"
+            },
+            "collection": {
+                "href": "/movies",
+                "method": "GET"
+            },
+            "reviews": {
+                "href": "/movies/1/reviews",
+                "method": "GET"
+            },
+            "watch": {
+                "href": "/movies/1",
+                "method": "GET"
+            },
+            "casts": {
+                "href": "/movies/1/casts",
+                "method": "GET"
+            },
+            "review": {
+                "href": "/movies/1",
+                "method": "POST"
+            },
+            "update": {
+                "href": "/movies/1",
+                "method": "PUT"
+            },
+            "delete": {
+                "href": "/movies/1",
+                "method": "DELETE"
+            }
+        }
+    },
+    {
+        "id": 2,
+        "title": "Inception",
+        "year": 2010,
+        "genre": "science fiction",
+        "casts": ["Leonardo DiCaprio", "Joseph Gordon-Levitt"],
+        "watched": true,
+        "rating": 8.8,
+        "_links": {
+            "directors": {
+                "href": "/movies/2/directors",
+                "method": "GET"
+            },
+            "collection": {
+                "href": "/movies",
+                "method": "GET"
+            },
+            "reviews": {
+                "href": "/movies/2/reviews",
+                "method": "GET"
+            },
+            "watch": {
+                "href": "/movies/2",
+                "method": "GET"
+            },
+            "casts": {
+                "href": "/movies/2/casts",
+                "method": "GET"
+            },
+            "review": {
+                "href": "/movies/2",
+                "method": "POST"
+            },
+            "update": {
+                "href": "/movies/2",
+                "method": "PUT"
+            },
+            "delete": {
+                "href": "/movies/2",
+                "method": "DELETE"
+            }
+        }
+    },
+    {
+        "id": 3,
+        "title": "The Godfather",
+        "year": 1972,
+        "genre": "crime",
+        "casts": ["Marlon Brando", "Al Pacino"],
+        "watched": false,
+        "rating": 9.2,
+        "_links": {
+            "directors": {
+                "href": "/movies/3/directors",
+                "method": "GET"
+            },
+            "collection": {
+                "href": "/movies",
+                "method": "GET"
+            },
+            "reviews": {
+                "href": "/movies/3/reviews",
+                "method": "GET"
+            },
+            "watch": {
+                "href": "/movies/3",
+                "method": "GET"
+            },
+            "casts": {
+                "href": "/movies/3/casts",
+                "method": "GET"
+            },
+            "review": {
+                "href": "/movies/3",
+                "method": "POST"
+            },
+            "update": {
+                "href": "/movies/3",
+                "method": "PUT"
+            },
+            "delete": {
+                "href": "/movies/3",
+                "method": "DELETE"
+            }
+        }
+    },
+    {
+        "id": 4,
+        "title": "La La Land",
+        "year": 2016,
+        "genre": "musical",
+        "casts": ["Emma Stone", "Ryan Gosling"],
+        "watched": true,
+        "rating": 8.0,
+        "_links": {
+            "directors": {
+                "href": "/movies/4/directors",
+                "method": "GET"
+            },
+            "collection": {
+                "href": "/movies",
+                "method": "GET"
+            },
+            "reviews": {
+                "href": "/movies/4/reviews",
+                "method": "GET"
+            },
+            "watch": {
+                "href": "/movies/4",
+                "method": "GET"
+            },
+            "casts": {
+                "href": "/movies/4/casts",
+                "method": "GET"
+            },
+            "review": {
+                "href": "/movies/4",
+                "method": "POST"
+            },
+            "update": {
+                "href": "/movies/4",
+                "method": "PUT"
+            },
+            "delete": {
+                "href": "/movies/4",
+                "method": "DELETE"
+            }
+        }
+    },
+    {
+        "id": 5,
+        "title": "Parasite",
+        "year": 2019,
+        "genre": "thriller",
+        "casts": ["Song Kang-ho", "Lee Sun-kyun"],
+        "watched": false,
+        "rating": 8.5,
+        "_links": {
+            "directors": {
+                "href": "/movies/5/directors",
+                "method": "GET"
+            },
+            "collection": {
+                "href": "/movies",
+                "method": "GET"
+            },
+            "reviews": {
+                "href": "/movies/5/reviews",
+                "method": "GET"
+            },
+            "watch": {
+                "href": "/movies/5",
+                "method": "GET"
+            },
+            "casts": {
+                "href": "/movies/5/casts",
+                "method": "GET"
+            },
+            "review": {
+                "href": "/movies/5",
+                "method": "POST"
+            },
+            "update": {
+                "href": "/movies/5",
+                "method": "PUT"
+            },
+            "delete": {
+                "href": "/movies/5",
+                "method": "DELETE"
+            }
+        }
+    }
+]

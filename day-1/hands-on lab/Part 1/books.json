@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "authors": ["J.K. Rowling"],
+        "published_year": 1997,
+        "available": true,
+        "genres": ["Fantasy", "Adventure"],
+        "publisher": {
+            "name": "Bloomsbury",
+            "city": "London"
+        }
+    },
+    {
+        "id": 2,
+        "title": "The Hobbit",
+        "authors": ["J.R.R. Tolkien"],
+        "published_year": 1937,
+        "available": false,
+        "genres": ["Fantasy", "Classic"],
+        "publisher": {
+            "name": "George Allen & Unwin",
+            "city": "London"
+        }
+    },
+    {
+        "id": 3,
+        "title": "To Kill a Mockingbird",
+        "authors": ["Harper Lee"],
+        "published_year": 1960,
+        "available": true,
+        "genres": ["Fiction", "Classic"],
+        "publisher": {
+            "name": "J.B. Lippincott & Co.",
+            "city": "Philadelphia"
+        }
+    },
+    {
+        "id": 4,
+        "title": "1984",
+        "authors": ["George Orwell"],
+        "published_year": 1949,
+        "available": true,
+        "genres": ["Dystopian", "Science Fiction"],
+        "publisher": {
+            "name": "Secker & Warburg",
+            "city": "London"
+        }
+    },
+    {
+        "id": 5,
+        "title": "Pride and Prejudice",
+        "authors": ["Jane Austen"],
+        "published_year": 1813,
+        "available": false,
+        "genres": ["Romance", "Classic"],
+        "publisher": {
+            "name": "T. Egerton",
+            "city": "London"
+        }
+    }
+]

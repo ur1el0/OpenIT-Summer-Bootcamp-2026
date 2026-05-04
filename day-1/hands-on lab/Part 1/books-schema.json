@@ -1,0 +1,66 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+     "type": "array",
+       "items": 
+       {
+        "type": "object",
+        "required": ["id", "title", "authors", "published_year","available", "genres", "publisher"],
+        "properties": 
+        {
+            "id": 
+            {
+                "type": "integer",
+                "minimum": 1
+            },
+            "title": 
+            {   
+                "type": "string"
+            },
+            "authors": 
+            {
+                "type": "array",
+                "minItems": 1,
+                "items": 
+                {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                }
+            },
+            "published_year": 
+            {
+                "type" : "integer",
+                "minimum": 1000,
+                "maximum": 2026
+            },
+            "available": 
+            {
+                "type": "boolean"
+            },
+            "genres" : 
+            {
+                "type" : "array",
+                "minItems": 2,
+                "items": 
+                {
+                    "type": "string"
+                }
+            },
+            "publisher": 
+            {
+                "type": "object",
+                "properties": 
+                {
+                    "name": 
+                    {
+                        "type": "string"
+                    },
+                    "city": 
+                    {
+                        "type" : "string"
+                    }
+                }
+            }
+        }
+    }
+}

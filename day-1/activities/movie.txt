@@ -51,21 +51,21 @@ The difference between GET /movies/5 and GET /movies?id=5 is that the first one 
             "method": "GET"
         },
         "reviews": {
-            "href": "/movies/{id}/reviews/",
+            "href": "/movies/{id}/reviews",
             "method": "GET"
         },
         "watch": {
-            "href":" /movies/{id},
+            "href":" /movies/{id}",
             "method": "GET"
         },
         "casts": {
             "href": "/movies/{id}/casts",
             "method": "GET"
-        }
+        },
         "review": {
-            "href": "/movies/{id}/,
+            "href": "/movies/{id}",
             "method": "POST"
-        }
+        },
         "update": {
             "href": "/movies/{id}",
             "method": "PUT"
@@ -76,7 +76,6 @@ The difference between GET /movies/5 and GET /movies?id=5 is that the first one 
         }
     }
 }
-
 
 
 5. 

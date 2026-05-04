@@ -1,0 +1,76 @@
+GET endpoints
+
+GET /books
+GET /books/{id}
+GET /books/{id}/authors
+GET /book/{id}/authors/{id}
+
+Content-Type: application/json
+Authorization: Bearer <token>
+Accept: application/json
+
+Status codes
+ - 200 OK
+ - 400 Bad Request
+ - 401 Unauthorized
+ - 403 Forbidden
+ - 404 Not Found
+ - 500 Internal Server Error
+
+
+ 
+POST, PUT, PATCH, AND DELETE endpoints
+
+POST /books
+PUT /books/{id}
+PATCH /books/{id}
+DELETE /books/{id}
+
+POST:
+    Headers:
+    Content-Type: application/json
+    Authorization: Bearer <token>
+    Accept: application/json
+    
+    Status Codes:
+    - 200 OK
+    - 201 Created
+    - 400 Bad Request
+    - 401 Unauthorized
+    - 500 Internal Server Error
+
+PUT:
+    Headers:
+    Content-Type: application/json
+    Authorization: Bearer <token>
+    Accept: application/json
+
+    Status Codes:
+    - 200 OK
+    - 201 Created
+    - 400 Bad Request
+    - 401 Unauthorized
+    - 500 Internal Server Error
+
+PATCH:
+    Headers:
+    Content-Type: application/json
+    Authorization: Bearer <token>
+    Accept: application/json
+
+    Status Codes:
+    - 200 OK
+    - 201 Created
+    - 400 Bad Request
+    - 401 Unauthorized
+    - 500 Internal Server Error
+
+DELETE:
+    Headers:
+    Content-Type: application/json
+    Authorization: Bearer <token>
+    Accept: application/json
+
+    Status Codes:
+    - 200 OK
+    - 204 No Content
