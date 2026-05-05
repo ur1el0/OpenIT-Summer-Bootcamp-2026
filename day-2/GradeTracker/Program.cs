@@ -52,11 +52,19 @@ class MainClass
         students[2].grades.AddRange(new double[] { 80.0, 82.0, 79.0 });
         students[3].grades.AddRange(new double[] { 88.0, 91.0, 87.0 });
 
-        Student topStudent = students.OrderByDescending(s => s.GetAverage()).First();
+        List<Student> rankedStudents = students
+            .OrderByDescending(s => s.GetAverage())
+            .ToList();
+
+        Student topStudent = rankedStudents.First();
         
         Console.WriteLine($"Top Student: {topStudent.name}({topStudent.course}) - Average Grade: {topStudent.GetAverage():F2}");
         Console.WriteLine($"\nHonor: {string.Join(", ", students.Where(s => s.IsHonor()).Select(s => s.name))}");
-        Console.WriteLine($"\nCS: {students.Count(s => s.course == "CS")} students | IT: {students.Count(s => s.course == "IT")} students");
-        Console.WriteLine($"\nRank 1: {topStudent.name} - Average Grade: {topStudent.GetAverage():F2} | Rank 2: {students.OrderByDescending(s => s.GetAverage()).Skip(1).First().name} - Average Grade: {students.OrderByDescending(s => s.GetAverage()).Skip(1).First().GetAverage():F2} | Rank 3: {students.OrderByDescending(s => s.GetAverage()).Skip(2).First().name} - Average Grade: {students.OrderByDescending(s => s.GetAverage()).Skip(2).First().GetAverage():F2}");
-    }  
+        Console.WriteLine($"\nCS: {students.Count(s => s.course == "CS")} students | IT: {students.Count(s => s.course == "IT")} students\n");
+
+        for (int i = 0; i < rankedStudents.Count; i++)
+        {
+            Console.WriteLine($"Rank {i + 1}: {rankedStudents[i].name} - Average Grade: {rankedStudents[i].GetAverage():F2}");
+        }
+    }
 }
