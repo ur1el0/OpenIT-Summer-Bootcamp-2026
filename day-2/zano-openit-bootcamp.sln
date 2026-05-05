@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "day-2", "day-2", "{9DAC67E1-E743-668A-B739-6B91816EFBBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradeTracker", "day-2\GradeTracker\GradeTracker.csproj", "{3FB3584B-CC8E-611F-4012-922F2B605C9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FB3584B-CC8E-611F-4012-922F2B605C9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB3584B-CC8E-611F-4012-922F2B605C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB3584B-CC8E-611F-4012-922F2B605C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB3584B-CC8E-611F-4012-922F2B605C9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3FB3584B-CC8E-611F-4012-922F2B605C9C} = {9DAC67E1-E743-668A-B739-6B91816EFBBC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E2670EB-755A-4C9A-B0AC-16880F7FB976}
+	EndGlobalSection
+EndGlobal

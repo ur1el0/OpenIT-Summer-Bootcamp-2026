@@ -1,0 +1,88 @@
+@StudentEnrollmentAPI_HostAddress = http://localhost:5000
+
+### Get all students
+GET {{StudentEnrollmentAPI_HostAddress}}/api/student
+Accept: application/json
+
+###
+
+### Get student by ID
+GET {{StudentEnrollmentAPI_HostAddress}}/api/student/1
+Accept: application/json
+
+###
+
+### Search by gender
+GET {{StudentEnrollmentAPI_HostAddress}}/api/student/search?gender=Male
+Accept: application/json
+
+###
+
+### Search by gender and year
+GET {{StudentEnrollmentAPI_HostAddress}}/api/student/search?gender=Female&year=2023
+Accept: application/json
+
+###
+
+### Search by department
+GET {{StudentEnrollmentAPI_HostAddress}}/api/student/search?department=IT
+Accept: application/json
+
+###
+
+### Search by course
+GET {{StudentEnrollmentAPI_HostAddress}}/api/student/search?course=Computer
+Accept: application/json
+
+###
+
+### Create new student (POST - 201 Created with Location header)
+POST {{StudentEnrollmentAPI_HostAddress}}/api/student
+Content-Type: application/json
+
+{
+	"firstName": "John",
+	"lastName": "Smith",
+	"year": 2024,
+	"course": "Information Technology",
+	"gender": "Male",
+	"oldSchool": "St. John High School",
+	"enrolled": "Yes",
+	"department": "IT",
+	"address": "Manila City"
+}
+
+###
+
+### Update entire student (PUT)
+PUT {{StudentEnrollmentAPI_HostAddress}}/api/student/1
+Content-Type: application/json
+
+{
+	"firstName": "Roosc",
+	"lastName": "Zaño",
+	"year": 2024,
+	"course": "Computer Science",
+	"gender": "Male",
+	"oldSchool": "Dalahican National High School",
+	"enrolled": "Yes",
+	"department": "CS",
+	"address": "Quezon City"
+}
+
+###
+
+### Partial update student (PATCH - only provided fields)
+PATCH {{StudentEnrollmentAPI_HostAddress}}/api/student/2
+Content-Type: application/json
+
+{
+	"course": "Computer Science",
+	"department": "CS"
+}
+
+###
+
+### Delete student (DELETE - 204 No Content)
+DELETE {{StudentEnrollmentAPI_HostAddress}}/api/student/4
+Accept: application/json
