@@ -1,0 +1,190 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|c:\\users\\cl3\\source\\repos\\day3webapi\\day3webapi\\services\\booksservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|solutionrelative:day3webapi\\services\\booksservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|c:\\users\\cl3\\source\\repos\\day3webapi\\day3webapi\\controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|solutionrelative:day3webapi\\controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|c:\\users\\cl3\\source\\repos\\day3webapi\\day3webapi\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|solutionrelative:day3webapi\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|c:\\users\\cl3\\source\\repos\\day3webapi\\day3webapi\\services\\ibooksservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|solutionrelative:day3webapi\\services\\ibooksservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|c:\\users\\cl3\\source\\repos\\day3webapi\\day3webapi\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|solutionrelative:day3webapi\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|c:\\users\\cl3\\source\\repos\\day3webapi\\day3webapi\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|solutionrelative:day3webapi\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|c:\\users\\cl3\\source\\repos\\day3webapi\\day3webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|solutionrelative:day3webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|c:\\users\\cl3\\source\\repos\\day3webapi\\day3webapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|solutionrelative:day3webapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|c:\\users\\cl3\\source\\repos\\day3webapi\\day3webapi\\day3webapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|solutionrelative:day3webapi\\day3webapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|c:\\users\\cl3\\source\\repos\\day3webapi\\day3webapi\\dtos\\bookpatchdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFE0B272-087B-4391-AA40-25D9AD4F6F4C}|Day3WebApi\\Day3WebApi.csproj|solutionrelative:day3webapi\\dtos\\bookpatchdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthorsController.cs",
+              "DocumentMoniker": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Controllers\\AuthorsController.cs",
+              "RelativeDocumentMoniker": "Day3WebApi\\Controllers\\AuthorsController.cs",
+              "ToolTip": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Controllers\\AuthorsController.cs",
+              "RelativeToolTip": "Day3WebApi\\Controllers\\AuthorsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T03:39:51.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Author.cs",
+              "DocumentMoniker": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Models\\Author.cs",
+              "RelativeDocumentMoniker": "Day3WebApi\\Models\\Author.cs",
+              "ToolTip": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Models\\Author.cs",
+              "RelativeToolTip": "Day3WebApi\\Models\\Author.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T03:37:45.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IBooksService.cs",
+              "DocumentMoniker": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Services\\IBooksService.cs",
+              "RelativeDocumentMoniker": "Day3WebApi\\Services\\IBooksService.cs",
+              "ToolTip": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Services\\IBooksService.cs",
+              "RelativeToolTip": "Day3WebApi\\Services\\IBooksService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T03:19:34.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Day3WebApi.http",
+              "DocumentMoniker": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Day3WebApi.http",
+              "RelativeDocumentMoniker": "Day3WebApi\\Day3WebApi.http",
+              "ToolTip": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Day3WebApi.http",
+              "RelativeToolTip": "Day3WebApi\\Day3WebApi.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-05-06T02:24:43.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BooksService.cs",
+              "DocumentMoniker": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Services\\BooksService.cs",
+              "RelativeDocumentMoniker": "Day3WebApi\\Services\\BooksService.cs",
+              "ToolTip": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Services\\BooksService.cs",
+              "RelativeToolTip": "Day3WebApi\\Services\\BooksService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T01:56:51.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Program.cs",
+              "RelativeDocumentMoniker": "Day3WebApi\\Program.cs",
+              "ToolTip": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Program.cs",
+              "RelativeToolTip": "Day3WebApi\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T01:17:31.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BookPatchDto.cs",
+              "DocumentMoniker": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\DTOs\\BookPatchDto.cs",
+              "RelativeDocumentMoniker": "Day3WebApi\\DTOs\\BookPatchDto.cs",
+              "ToolTip": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\DTOs\\BookPatchDto.cs",
+              "RelativeToolTip": "Day3WebApi\\DTOs\\BookPatchDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T01:17:26.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Models\\Book.cs",
+              "RelativeDocumentMoniker": "Day3WebApi\\Models\\Book.cs",
+              "ToolTip": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Models\\Book.cs",
+              "RelativeToolTip": "Day3WebApi\\Models\\Book.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T01:14:30.45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BooksController.cs",
+              "DocumentMoniker": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Controllers\\BooksController.cs",
+              "RelativeDocumentMoniker": "Day3WebApi\\Controllers\\BooksController.cs",
+              "ToolTip": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Controllers\\BooksController.cs",
+              "RelativeToolTip": "Day3WebApi\\Controllers\\BooksController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T01:13:39.777Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "Day3WebApi\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\CL3\\source\\repos\\Day3WebApi\\Day3WebApi\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "Day3WebApi\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T01:10:31.714Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
