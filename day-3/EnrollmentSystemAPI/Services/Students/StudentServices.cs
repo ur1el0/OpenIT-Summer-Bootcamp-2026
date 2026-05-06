@@ -1,6 +1,6 @@
 using EnrollmentSystem.Models;
 
-namespace EnrollmentSystem.Services.Student
+namespace EnrollmentSystem.Services.Students
 {
     public class StudentServices : IStudentServices
     {

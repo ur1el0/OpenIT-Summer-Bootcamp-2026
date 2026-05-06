@@ -1,3 +1,5 @@
+using EnrollmentSystem.Models;
+
 namespace EnrollmentSystem.Services.Sections
 {
     public interface ISectionsService

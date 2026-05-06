@@ -1,68 +1,81 @@
 using EnrollmentSystem.Models;
-using EnrollmentSystem.Services.Student;
+using EnrollmentSystem.Services.Students;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnrollmentSystem.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/section/{sectionId}/student")]
 public class StudentController : ControllerBase
 {
-	private readonly IStudentServices studentServices;
+	private readonly IStudentServices _studentServices;
 
-	public StudentController(IStudentServices _studentServices)
+	public StudentController(IStudentServices studentServices)
 	{
-		studentServices = _studentServices;
+		_studentServices = studentServices;
 	}
 
 	[HttpGet]
-	public ActionResult<List<Student>> GetAll()
+	public ActionResult<List<Student>> GetAll(int sectionId)
 	{
-		return Ok(_studentServices.GetAll());
+		var students = _studentServices.Search(null, null, null, sectionId, null);
+		return Ok(students);
 	}
 
-	[HttpGet("{id:int}")]
-	public IActionResult GetById(int id)
+	[HttpGet("{studentId:int}")]
+	public IActionResult GetById(int sectionId, int studentId)
 	{
-		return Ok(studentServices.GetById(id));
+		var student = _studentServices.GetById(studentId);
+		if (student == null || student.SectionId != sectionId) return NotFound();
+		return Ok(student);
 	}
 
 	[HttpGet("search")]
 	public ActionResult<List<Student>> Search(
+		int sectionId,
 		[FromQuery] string? firstName,
 		[FromQuery] string? lastName,
 		[FromQuery] int? age,
-		[FromQuery] int? sectionId,
 		[FromQuery] char? gender)
 	{
-		return Ok(_studentServices.Search(firstName, lastName, age, sectionId, gender));
+		var students = _studentServices.Search(firstName, lastName, age, sectionId, gender);
+		return Ok(students);
 	}
 
 	[HttpPost]
-	public IActionResult Create([FromBody] Student student)
+	public IActionResult Create(int sectionId, [FromBody] Student student)
 	{
-		studentServices.Create(student);
-		return Ok();
+		student.SectionId = sectionId;
+		_studentServices.Create(student);
+		return CreatedAtAction(nameof(GetById), new { sectionId = sectionId, studentId = student.Id }, student);
 	}
 
-	[HttpPut("{id:int}")]
-	public IActionResult Update(int id, [FromBody] Student updated)
+	[HttpPut("{studentId:int}")]
+	public IActionResult Update(int sectionId, int studentId, [FromBody] Student updated)
 	{
-		studentServices.Update(id, updated);
-		return Ok();
+		var existing = _studentServices.GetById(studentId);
+		if (existing == null || existing.SectionId != sectionId) return NotFound();
+		updated.SectionId = sectionId;
+		_studentServices.Update(studentId, updated);
+		return NoContent();
 	}
 
-	[HttpPatch("{id:int}")]
-	public IActionResult Patch(int id, [FromBody] Student patched)
+	[HttpPatch("{studentId:int}")]
+	public IActionResult Patch(int sectionId, int studentId, [FromBody] Student patched)
 	{
-		studentServices.Patch(id, patched);
-		return Ok();
+		var existing = _studentServices.GetById(studentId);
+		if (existing == null || existing.SectionId != sectionId) return NotFound();
+		patched.SectionId = sectionId;
+		_studentServices.Patch(studentId, patched);
+		return NoContent();
 	}
 
-	[HttpDelete("{id:int}")]
-	public IActionResult Delete(int id)
+	[HttpDelete("{studentId:int}")]
+	public IActionResult Delete(int sectionId, int studentId)
 	{
-		studentServices.Delete(id);
-		return Ok();
+		var existing = _studentServices.GetById(studentId);
+		if (existing == null || existing.SectionId != sectionId) return NotFound();
+		_studentServices.Delete(studentId);
+		return NoContent();
 	}
 }

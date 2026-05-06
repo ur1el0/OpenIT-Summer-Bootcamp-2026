@@ -4,8 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
-builder.Services.AddScoped<EnrollmentSystem.Services.Student.IStudentServices, EnrollmentSystem.Services.Student.StudentServices>();
-builder.Services.AddScoped<EnrollmentSystem.Services.Sections.ISectionsService, EnrollmentSystem.Services.Sections.SectionServices>();
+builder.Services.AddSingleton<EnrollmentSystem.Services.Students.IStudentServices, EnrollmentSystem.Services.Students.StudentServices>();
+builder.Services.AddSingleton<EnrollmentSystem.Services.Sections.ISectionsService, EnrollmentSystem.Services.Sections.SectionServices>();
 
 var app = builder.Build();
 
