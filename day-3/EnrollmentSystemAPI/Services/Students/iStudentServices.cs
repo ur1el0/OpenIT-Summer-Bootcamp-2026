@@ -1,13 +1,15 @@
+using EnrollmentSystem.Models;
+
 namespace EnrollmentSystem.Services.Student
 {
-    public class StudentServices : IStudentServices
+    public interface IStudentServices
     {
-        public List<Student> GetAll();
-        public Student? GetById(int id);
-        public List<Student> Search(string? FirstName, string? LastName, int? Age, int? SectionId, char? Gender);
-        public void Create(Student student);
-        public void Update(int id, Student updated);
-        public void Patch(int id, Student patched);
-        public void Delete(int id);
+        List<Student> GetAll();
+        Student? GetById(int id);
+        List<Student> Search(string? firstName, string? lastName, int? age, int? sectionId, char? gender);
+        void Create(Student student);
+        void Update(int id, Student updated);
+        void Patch(int id, Student patched);
+        void Delete(int id);
     }
 }

@@ -1,8 +1,10 @@
+using EnrollmentSystem.Models;
+
 namespace EnrollmentSystem.Services.Student
 {
     public class StudentServices : IStudentServices
     {
-        public readonly List<Student> _students = new List<Student>
+        private readonly List<Student> _students = new()
         {
             new Student
             {
@@ -24,67 +26,74 @@ namespace EnrollmentSystem.Services.Student
             }
         };
 
-        public List <Student> GetAll()
+        public List<Student> GetAll()
         {
             return _students;
         }
 
         public Student? GetById(int id)
         {
-            var student = _students.FirstOrDefault(s => s.Id == id);
-            return student;
+            return _students.FirstOrDefault(s => s.Id == id);
         }
-        public List<Student> Search(string? FirstName, string? LastName, int? Age, int? SectionId, char? Gender)
+
+        public List<Student> Search(string? firstName, string? lastName, int? age, int? sectionId, char? gender)
         {
-            if (!string.IsNullOrEmpty(FirstName))
-                result = result.Where(s => s.FirstName.Contains(FirstName, StringComparison.OrdinalIgnoreCase));
+            var result = _students.AsEnumerable();
 
-            if (!string.IsNullOrEmpty(LastName))
-                result = result.Where(s => s.LastName.Contains(LastName, StringComparison.OrdinalIgnoreCase));
+            if (!string.IsNullOrWhiteSpace(firstName))
+                result = result.Where(s => s.FirstName.Contains(firstName, StringComparison.OrdinalIgnoreCase));
 
-            if (Age.HasValue)
-                result = result.Where(s => s.Age == Age.Value);
+            if (!string.IsNullOrWhiteSpace(lastName))
+                result = result.Where(s => s.LastName.Contains(lastName, StringComparison.OrdinalIgnoreCase));
 
-            if (SectionId.HasValue)
-                result = result.Where(s => s.SectionId == SectionId.Value);
+            if (age.HasValue)
+                result = result.Where(s => s.Age == age.Value);
 
-            if (Gender.HasValue)
-                result = result.Where(s => s.Gender == Gender.Value);
+            if (sectionId.HasValue)
+                result = result.Where(s => s.SectionId == sectionId.Value);
+
+            if (gender.HasValue)
+                result = result.Where(s => s.Gender == gender.Value);
 
             return result.ToList();
         }
+
         public void Create(Student student)
         {
-            student.id = _students.Count == 0 ? 1 : _students.Max(s => s.Id) + 1;
-            _students.Add(book);
+            student.Id = _students.Count == 0 ? 1 : _students.Max(s => s.Id) + 1;
+            _students.Add(student);
         }
 
         public void Update(int id, Student updated)
         {
-            var update = _students.FirstOrDefault(s => s.Id == id);
-            if (update == null) return;
-            update.FirstName = updated.FirstName;
-            update.LastName = updated.LastName;
-            update.Age = updated.Age;
-            update.Gender = updated.Gender;
+            var student = _students.FirstOrDefault(s => s.Id == id);
+            if (student == null) return;
+
+            student.FirstName = updated.FirstName;
+            student.LastName = updated.LastName;
+            student.Age = updated.Age;
+            student.SectionId = updated.SectionId;
+            student.Gender = updated.Gender;
         }
 
-        public void Patch(int id, Student patch)
+        public void Patch(int id, Student patched)
         {
-            var update = _students.FirstOrDefault(s => s.Id == id);
-            if (patch == null) return;
-            if (patch.FirstName != null) update.FirstName = patch.FirstName;
-            if (patch.LastName != null) update.LastName = patch.FirstName;
-            if (patch.Age != null) update.Age = patch.Age;
-            if (patch.Gender != null) update.Gender = patch.Gender;
+            var student = _students.FirstOrDefault(s => s.Id == id);
+            if (student == null) return;
+
+            student.FirstName = patched.FirstName;
+            student.LastName = patched.LastName;
+            student.Age = patched.Age;
+            student.SectionId = patched.SectionId;
+            student.Gender = patched.Gender;
         }
 
         public void Delete(int id)
         {
             var student = _students.FirstOrDefault(s => s.Id == id);
             if (student == null) return;
+
             _students.Remove(student);
         }
-
     }
 }
