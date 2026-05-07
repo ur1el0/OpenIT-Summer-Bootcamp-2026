@@ -1,0 +1,11 @@
+@EnrollmentSystemApi_HostAddress = http://localhost:5000
+
+GET {{EnrollmentSystemApi_HostAddress}}/api/sections/M2022/students
+Accept: application/json
+
+###
+
+GET {{EnrollmentSystemApi_HostAddress}}/api/sections/M2022/students/1
+Accept: application/json
+
+###
