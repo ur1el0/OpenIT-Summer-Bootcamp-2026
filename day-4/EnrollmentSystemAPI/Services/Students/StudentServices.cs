@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using EnrollmentSystemApi.Data;
 using EnrollmentSystemApi.DTOs.Students;
 using EnrollmentSystemApi.Models;
-using System.Runtime.CompilerServices;
 
 namespace EnrollmentSystemApi.Services.Students;
 
@@ -244,7 +243,7 @@ public class StudentService : IStudentService
         string? lastName,
         string? gender,
         int? age,
-        int? grade)
+        int? grade = null)
     {
         var result = students;
 

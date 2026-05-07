@@ -1,4 +1,11 @@
 using EnrollmentSystemApi.Data;
+using System.Net.Cache;
+using System;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,21 +19,33 @@ builder.Services.AddSingleton<EnrollmentSystemApi.Services.Sections.ISectionServ
 
 var app = builder.Build();
 
-app.Use(async (context, next ) =>
-{
-    if (context.Request.Method == "POST" &&
-        context.Request.Path.Value!.Contains("/api/section"))
-    {
-        var random = new Random();
-        int grade = random.Next(75, 101);
-        context.Items["GeneratedGrade"] = grade;
-    }
-    await next(context);
+// app.Use(async (context, next) =>
+// {
+//     context.Request.EnableBuffering();
 
-});
+//     if (context.Request.ContentLength > 0 && context.Request.ContentType?.Contains("application/json") == true)
+//     {
+//         using var reader = new StreamReader(context.Request.Body, leaveOpen: true);
+//         var body = await reader.ReadToEndAsync();
 
+//         var jsonObject = JsonSerializer.Deserialize<Dictionary<string, object>>(body);
+//         if (jsonObject != null)
+//         {
+//             jsonObject["GeneratedGrade"] = new Random().Next(75, 101);
 
-app.UseMiddleware<RandomGradeGeneratorMiddleware>();
+//             var modifiedBody = JsonSerializer.Serialize(jsonObject);
+//             var byteArray = Encoding.UTF8.GetBytes(modifiedBody);
+//             context.Request.Body = new MemoryStream(byteArray);
+//             context.Request.ContentLength = byteArray.Length;
+//         }
+
+//         context.Request.Body.Position = 0;
+//         await next(context);
+//     }
+// });
+
+// app.UseMiddleware<RandomGradeGeneratorMiddleware>();
+// app.UseRandomGradeGenerator();
 
 app.UseHttpsRedirection();
 app.MapControllers();
