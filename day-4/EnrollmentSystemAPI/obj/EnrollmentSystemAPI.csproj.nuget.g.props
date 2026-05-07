@@ -5,12 +5,20 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+<<<<<<< HEAD
     <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\CL3\.nuget\packages\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
+=======
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Dell\.nuget\packages\</NuGetPackageFolders>
+>>>>>>> fbffcb53571c48c8df295b2262b2029a1ff37dba
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">7.0.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+<<<<<<< HEAD
     <SourceRoot Include="C:\Users\CL3\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
+=======
+    <SourceRoot Include="C:\Users\Dell\.nuget\packages\" />
+>>>>>>> fbffcb53571c48c8df295b2262b2029a1ff37dba
   </ItemGroup>
 </Project>

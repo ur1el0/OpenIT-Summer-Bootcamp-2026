@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\CL3\\zano-openit-bootcamp\\day-4\\EnrollmentSystemAPI\\EnrollmentSystemAPI.csproj": {}
   },
   "projects": {
@@ -20,12 +21,31 @@
           "C:\\Users\\CL3\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+    "C:\\users\\dell\\vsc\\.NET\\OpenIT-Summer-Bootcamp-2026\\day-4\\EnrollmentSystemAPI\\EnrollmentSystemAPI.csproj": {}
+  },
+  "projects": {
+    "C:\\users\\dell\\vsc\\.NET\\OpenIT-Summer-Bootcamp-2026\\day-4\\EnrollmentSystemAPI\\EnrollmentSystemAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\users\\dell\\vsc\\.NET\\OpenIT-Summer-Bootcamp-2026\\day-4\\EnrollmentSystemAPI\\EnrollmentSystemAPI.csproj",
+        "projectName": "EnrollmentSystemAPI",
+        "projectPath": "C:\\users\\dell\\vsc\\.NET\\OpenIT-Summer-Bootcamp-2026\\day-4\\EnrollmentSystemAPI\\EnrollmentSystemAPI.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\users\\dell\\vsc\\.NET\\OpenIT-Summer-Bootcamp-2026\\day-4\\EnrollmentSystemAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> fbffcb53571c48c8df295b2262b2029a1ff37dba
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
+<<<<<<< HEAD
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+=======
+>>>>>>> fbffcb53571c48c8df295b2262b2029a1ff37dba
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

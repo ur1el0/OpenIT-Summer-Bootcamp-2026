@@ -4,9 +4,12 @@ GET {{EnrollmentSystemAPI_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+<<<<<<< HEAD
 
 
 POST {{EnrollmentSystemAPI_HostAddress}}/api/section/1/student/3
 Accept: application/json
 
 Content-Length: 
+=======
+>>>>>>> fbffcb53571c48c8df295b2262b2029a1ff37dba

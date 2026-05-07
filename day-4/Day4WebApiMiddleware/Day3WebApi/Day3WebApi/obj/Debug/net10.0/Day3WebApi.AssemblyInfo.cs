@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Day3WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eab7e50bfe8ee21df55670dcb510623deb31d447")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+>>>>>>> fbffcb53571c48c8df295b2262b2029a1ff37dba
 [assembly: System.Reflection.AssemblyProductAttribute("Day3WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Day3WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
