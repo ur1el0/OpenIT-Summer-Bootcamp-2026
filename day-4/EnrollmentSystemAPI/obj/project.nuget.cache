@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "IMPvgMAsWuI=",
+  "success": true,
+  "projectFilePath": "C:\\users\\dell\\vsc\\.NET\\OpenIT-Summer-Bootcamp-2026\\day-4\\EnrollmentSystemAPI\\EnrollmentSystemAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.7\\microsoft.aspnetcore.openapi.10.0.7.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,6 @@
+@Day3WebApi_HostAddress = http://localhost:5253
+
+GET {{Day3WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
