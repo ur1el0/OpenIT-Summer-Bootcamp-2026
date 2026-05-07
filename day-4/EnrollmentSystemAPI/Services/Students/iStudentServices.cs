@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using EnrollmentSystemApi.DTOs.Students;
 
 namespace EnrollmentSystemApi.Services.Students;
@@ -19,20 +18,4 @@ public interface IStudentService
     bool PatchInSection(string sectionCode, int studentId, StudentPatchDTO studentPatchDTO);
     bool Delete(int id);
     bool DeleteInSection(string sectionCode, int studentId);
-=======
-using EnrollmentSystem.Models;
-
-namespace EnrollmentSystem.Services.Students
-{
-    public interface IStudentServices
-    {
-        List<Student> GetAll();
-        Student? GetById(int id);
-        List<Student> Search(string? firstName, string? lastName, int? age, int? sectionId, char? gender);
-        void Create(Student student);
-        void Update(int id, Student updated);
-        void Patch(int id, Student patched);
-        void Delete(int id);
-    }
->>>>>>> fbffcb53571c48c8df295b2262b2029a1ff37dba
 }

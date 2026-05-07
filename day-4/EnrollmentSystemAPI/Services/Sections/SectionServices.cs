@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using System.Linq;
 using System.Collections.Generic;
 using EnrollmentSystemApi.Data;
@@ -97,33 +96,3 @@ public class SectionService : ISectionService
         };
     }
 }
-=======
-using EnrollmentSystem.Models;
-
-namespace EnrollmentSystem.Services.Sections
-{
-    public class SectionServices : ISectionsService
-    {
-        private readonly List<Section> _sections = new()
-        {
-            new Section
-            {
-                Id = 1,
-                Code = "BSIT-1A",
-                Students = []
-            },
-            new Section
-            {
-                Id = 2,
-                Code = "BSIT-1B",
-                Students = []
-            }
-        };
-
-        public List<Section> GetAll()
-        {
-            return _sections;
-        }
-    }
-}
->>>>>>> fbffcb53571c48c8df295b2262b2029a1ff37dba
