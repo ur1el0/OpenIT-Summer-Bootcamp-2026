@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-left-side">
+                <h2>Library App</h2>
+            </div>
+            <div class="nav-right-side">
+                <ul>
+                    <li><a href="">Books</a></li>
+                    <li><a href="">Add Book</a></li>
+                    <li><a href="">Search</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="top-section">
+
+            <div class="search-nav">
+                <h2 class="catalog">Book Catalog</h2>
+                <div class="left-side">
+                    <input class="search-input" type="search" placeholder="Search books...">
+                    <select name="genres" id="genre">
+                        <option value="">All Genres</option>
+                        <option value="fiction">Fiction</option>
+                        <option value="non-fiction">Programming</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+        <section class="bottom-section">
+            
+            <div class="card">
+                <p class="genre">Programming</p>
+                <h3 class="card-title">Clean Code</h3>
+                <p class="card-author">by: Robert Martin</p>
+                <p class="date">2008</p>
+                <div class="status">
+                    <div class="circle available"></div>
+                    <p class="status available">Available</p>
+                </div>
+                
+                <button type="submit" id="lend">Lend</button>
+                <button type="reset" id="delete">Delete</button>
+            </div>
+            <div class="card">
+                <p class="genre">Programming</p>
+                <h3 class="card-title">Clean Code</h3>
+                <p class="card-author">by: Robert Martin</p>
+                <p class="date">2008</p>
+                <div class="status">
+                    <div class="circle available"></div>
+                    <p class="status available">Available</p>
+                </div>
+                
+                <button type="submit" id="lend">Lend</button>
+                <button type="reset" id="delete">Delete</button>
+            </div>
+            <div class="card">
+                <p class="genre">Programming</p>
+                <h3 class="card-title">Clean Code</h3>
+                <p class="card-author">by: Robert Martin</p>
+                <p class="date">2008</p>
+                <div class="status">
+                    <div class="circle unavailable"></div>
+                    <p class="status unavailable">Unavailable</p>
+                </div>
+                
+                <button type="submit" id="lend">Lend</button>
+                <button type="reset" id="delete">Delete</button>
+            </div>
+            
+        </section>
+    </main>
+</body>
+</html>

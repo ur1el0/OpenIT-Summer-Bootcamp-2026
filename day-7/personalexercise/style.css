@@ -1,0 +1,36 @@
+body
+{
+    height: 100vh;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+.box1
+{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+
+    top: 50px;
+    left: 50px;
+}
+
+.box2
+{
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    top: 70px;
+    left: 70px;
+}
+
+.box3  
+{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    top: 90px;
+    left: 90px;
+}
