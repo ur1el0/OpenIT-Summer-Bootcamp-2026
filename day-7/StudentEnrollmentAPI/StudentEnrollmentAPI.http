@@ -1,0 +1,84 @@
+@StudentEnrollmentAPI_HostAddress = http://localhost:5056
+
+# Run the API first:
+#   dotnet run
+
+###
+# Programs
+
+GET {{StudentEnrollmentAPI_HostAddress}}/api/programs
+Accept: application/json
+
+###
+POST {{StudentEnrollmentAPI_HostAddress}}/api/programs
+Content-Type: application/json
+
+{
+	"programName": "BSIT"
+}
+
+###
+# Sections
+
+GET {{StudentEnrollmentAPI_HostAddress}}/api/sections
+Accept: application/json
+
+###
+POST {{StudentEnrollmentAPI_HostAddress}}/api/sections
+Content-Type: application/json
+
+{
+	"code": "IT-101",
+	"year": 1,
+	"programId": 1
+}
+
+###
+# Students
+
+GET {{StudentEnrollmentAPI_HostAddress}}/api/students
+Accept: application/json
+
+###
+POST {{StudentEnrollmentAPI_HostAddress}}/api/students
+Content-Type: application/json
+
+{
+	"firstName": "Mika",
+	"lastName": "Cada",
+	"year": 1,
+	"gender": "Male",
+	"enrolled": true,
+    "grade":90
+}
+
+###
+# Student Sections (enroll a student into a section)
+
+GET {{StudentEnrollmentAPI_HostAddress}}/api/student-sections
+Accept: application/json
+
+###
+POST {{StudentEnrollmentAPI_HostAddress}}/api/student-sections
+Content-Type: application/json
+
+{
+	"studentId": 6,
+	"sectionId": 1
+}
+
+###
+# Student Grades
+
+GET {{StudentEnrollmentAPI_HostAddress}}/api/student-grades
+Accept: application/json
+
+###
+POST {{StudentEnrollmentAPI_HostAddress}}/api/student-grades
+Content-Type: application/json
+
+{
+	"studentId": 6,
+	"Student_SectionsId": 1,
+	"grade": 95
+}

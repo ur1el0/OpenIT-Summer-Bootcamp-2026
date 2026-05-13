@@ -87,6 +87,14 @@ a
     background: #f7f7f7;
 }
 
+.cards
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    
+}
+
 .card 
 {
     background: #fff;
@@ -96,6 +104,7 @@ a
     border-radius: 8px;
     width: 220px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    
 }
 
 .card-title 
