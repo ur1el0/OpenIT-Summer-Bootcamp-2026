@@ -9,7 +9,7 @@ import { useProgramContext } from './context/ProgramContext';
 import { useSectionContext } from './context/SectionContext';
 
 const StudentsTab = () => {
-    const { students, removeStudent, addStudent } = useStudentContext()
+  const { students, removeStudent, addStudent, editStudent } = useStudentContext()
     const { programs } = useProgramContext()
     const { sections } = useSectionContext()
   
@@ -19,6 +19,8 @@ const StudentsTab = () => {
   
     const mappedStudents = (students || []).map(student => ({
       id: student.id || student.Id,
+      firstName: student.firstName || student.FirstName || '',
+      lastName: student.lastName || student.LastName || '',
       name: `${student.firstName || student.FirstName} ${student.lastName || student.LastName}`,
       year: student.yearLevel || student.YearLevel || 1,
       gender: student.gender || student.Gender || 'Other',
@@ -26,6 +28,10 @@ const StudentsTab = () => {
       section: student.Section || '',
       avgGrade: student.Grade || '',
       enrolled: student._studentSectionId != null,
+      _sectionId: student._sectionId,
+      _studentSectionId: student._studentSectionId,
+      _studentSectionEnrolledAt: student._studentSectionEnrolledAt,
+      _gradeId: student._gradeId,
     }))
   
     const filteredStudents = mappedStudents.filter((student) => {
@@ -45,16 +51,46 @@ const StudentsTab = () => {
   
     const [showAddForm, setShowAddForm] = useState(false);
     const [formData, setFormData] = useState({ firstName: '', lastName: '', yearLevel: 1, gender: 'Male', sectionId: '', grade: '' });
+    const [editingStudent, setEditingStudent] = useState(null);
+
+    const handleEditStart = (student) => {
+      setEditingStudent(student);
+      setShowAddForm(true);
+      setFormData({
+        firstName: student.firstName,
+        lastName: student.lastName,
+        yearLevel: student.year,
+        gender: student.gender,
+        sectionId: student._sectionId ? String(student._sectionId) : '',
+        grade: student.avgGrade,
+      });
+    };
   
     const handleAddSubmit = (e) => {
       e.preventDefault();
-      addStudent({
+      const payload = {
         firstName: formData.firstName,
         lastName: formData.lastName,
         yearLevel: parseInt(formData.yearLevel, 10),
-        gender: formData.gender
-      }, formData.sectionId, formData.grade);
+        gender: formData.gender,
+      };
+
+      if (editingStudent) {
+        editStudent(
+          editingStudent.id,
+          payload,
+          formData.sectionId,
+          formData.grade,
+          editingStudent._studentSectionId,
+          editingStudent._studentSectionEnrolledAt,
+          editingStudent._gradeId,
+        );
+      } else {
+        addStudent(payload, formData.sectionId, formData.grade);
+      }
+
       setShowAddForm(false);
+      setEditingStudent(null);
       setFormData({ firstName: '', lastName: '', yearLevel: 1, gender: 'Male', sectionId: '', grade: '' });
     };
 
@@ -90,7 +126,7 @@ const StudentsTab = () => {
 
             <div className="add-student-section" style={{ padding: '0 20px 20px' }}>
                 <button onClick={() => setShowAddForm(!showAddForm)} style={{ padding: '8px 16px', background: '#007bff', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-                {showAddForm ? 'Cancel' : '+ Add New Student'}
+              {showAddForm ? 'Cancel' : '+ Add New Student'}
                 </button>
                 {showAddForm && (
                 <form onSubmit={handleAddSubmit} style={{ marginTop: '16px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
@@ -106,7 +142,7 @@ const StudentsTab = () => {
                         {sections.map(s => <option key={s.id || s.Id} value={s.id || s.Id}>{s.code || s.Code}</option>)}
                     </select>
                     <input type="number" step="0.01" placeholder="Initial Grade" value={formData.grade} onChange={e => setFormData({...formData, grade: e.target.value})} style={{ padding: '8px' }} />
-                    <button type="submit" style={{ padding: '8px 16px', background: '#28a745', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Save</button>
+                    <button type="submit" style={{ padding: '8px 16px', background: '#28a745', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>{editingStudent ? 'Update' : 'Save'}</button>
                 </form>
                 )}
             </div>
@@ -136,6 +172,7 @@ const StudentsTab = () => {
                         </span>
                     </div>
                     <div className="data-cell" style={{ display: 'flex', gap: '8px' }}>
+                      <button onClick={() => handleEditStart(student)} style={{ padding: '4px 8px', background: '#1f2448', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Update</button>
                         <button onClick={() => handleDelete(student.id)} style={{ padding: '4px 8px', background: '#dc3545', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Delete</button>
                     </div>
                 </div>

@@ -2,6 +2,11 @@
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
+    --text: #374151;
+    --text-h: #111827;
+    --bg: #f3f4f6;
+    --page-bg: #f3f4f6;
+  --accent-red: #c41e3a;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
@@ -13,8 +18,8 @@
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
+    --sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;
@@ -52,14 +57,13 @@
 
 body {
   margin: 0;
+  background: var(--page-bg);
 }
 
 #root {
-  width: 1126px;
+  width: 100%;
   max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
+  margin: 0;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -69,7 +73,7 @@ body {
 h1,
 h2 {
   font-family: var(--heading);
-  font-weight: 500;
+  font-weight: 700;
   color: var(--text-h);
 }
 
