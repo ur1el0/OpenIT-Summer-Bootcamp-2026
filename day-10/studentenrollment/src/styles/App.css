@@ -1,0 +1,330 @@
+* {
+  box-sizing: border-box;
+}
+
+#center {
+  width: min(1120px, calc(100% - 32px));
+  margin: 40px auto;
+  display: grid;
+  gap: 28px;
+  color: #e5e7eb;
+}
+
+#center form,
+#center > div {
+  background: linear-gradient(180deg, rgba(14, 18, 38, 0.96), rgba(10, 14, 31, 0.96));
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(2, 6, 23, 0.35);
+  backdrop-filter: blur(14px);
+}
+
+#center form {
+  padding: 28px;
+  display: grid;
+  gap: 14px;
+}
+
+#center h1 {
+  margin: 0 0 6px;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: #f8fafc;
+}
+
+#center h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(226, 232, 240, 0.82);
+}
+
+#center p {
+  margin: 0;
+}
+
+#center p[role='alert'] {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(185, 28, 28, 0.16);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  color: #fecaca;
+}
+
+#center input,
+#center button {
+  font: inherit;
+}
+
+#center input {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: rgba(15, 23, 42, 0.86);
+  color: #f8fafc;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+/* Selects and number inputs match regular inputs */
+#center select,
+#center input[type="number"] {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: rgba(15, 23, 42, 0.86);
+  color: #f8fafc;
+  outline: none;
+  appearance: none;
+}
+
+/* compact two-column layout inside the form when space allows */
+#center .form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* small helper text */
+#center .muted {
+  color: rgba(226, 232, 240, 0.6);
+  font-size: 0.85rem;
+}
+
+/* badges for enrolled status */
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.badge.enrolled { background: #10b981; color: white; }
+.badge.not-enrolled { background: #ef4444; color: white; }
+
+#center input::placeholder {
+  color: rgba(148, 163, 184, 0.8);
+}
+
+#center input:focus {
+  border-color: rgba(244, 63, 94, 0.7);
+  box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.12);
+}
+
+#center form > button,
+#center td button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 700;
+  cursor: pointer;
+  max-width: 200px;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+#center form > button {
+  justify-self: start;
+  background: linear-gradient(135deg, #f43f5e, #fb7185);
+  color: white;
+  box-shadow: 0 14px 30px rgba(244, 63, 94, 0.24);
+}
+
+#center form > button[type='button'] {
+  background: rgba(148, 163, 184, 0.15);
+  color: #e2e8f0;
+  box-shadow: none;
+}
+
+#center form > button:hover,
+#center td button:hover {
+  transform: translateY(-1px);
+}
+
+#center form > button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+  transform: none;
+}
+
+#center > div {
+  padding: 24px;
+}
+
+#center > div > h2 {
+  margin-bottom: 18px;
+  font-size: 1.25rem;
+  color: #f8fafc;
+}
+
+#center table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+/* Fix header/data alignment by using fixed table layout and explicit column widths */
+#center table {
+  table-layout: fixed;
+}
+
+#center th,
+#center td {
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Allow header text to wrap so column labels aren't truncated */
+#center thead th {
+  white-space: normal;
+}
+
+/* keep data cells single-line with ellipsis */
+#center tbody td {
+  white-space: nowrap;
+}
+
+/* adjusted column width distribution */
+/* tuned column widths to ensure action buttons and badges fit */
+#center thead th:nth-child(1) { width: 14%; }
+#center thead th:nth-child(2) { width: 14%; }
+#center thead th:nth-child(3) { width: 8%; }
+#center thead th:nth-child(4) { width: 13%; }
+#center thead th:nth-child(5) { width: 13%; }
+#center thead th:nth-child(6) { width: 12%; }
+#center thead th:nth-child(7) { width: 8%; }
+#center thead th:nth-child(8) { width: 18%; }
+
+/* Actions column: don't truncate buttons; let it expand within its allotted width */
+#center td:last-child {
+  text-align: right;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+/* Ensure buttons and badges are visible and not truncated */
+#center td button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 80px;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.action-edit { background: rgba(148,163,184,0.12); color: #e2e8f0; }
+.action-delete { background: rgba(244,63,94,0.16); color: #fecdd3; }
+
+.badge { margin-right: 6px; }
+
+/* larger checkbox */
+#center input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+#center thead {
+  background: rgba(15, 23, 42, 0.95);
+}
+
+#center th {
+  padding: 16px 14px;
+  text-align: left;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.82);
+}
+
+#center tbody tr {
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(15, 23, 42, 0.5);
+}
+
+#center tbody tr:nth-child(even) {
+  background: rgba(15, 23, 42, 0.7);
+}
+
+#center td {
+  padding: 15px 14px;
+  color: #e2e8f0;
+}
+
+#center td:last-child {
+  white-space: nowrap;
+}
+
+#center td button {
+  margin-right: 10px;
+  background: rgba(148, 163, 184, 0.16);
+  color: #f8fafc;
+}
+
+#center td button:last-child {
+  margin-right: 0;
+  background: rgba(244, 63, 94, 0.18);
+  color: #fecdd3;
+}
+
+@media (max-width: 768px) {
+  #center {
+    width: min(100% - 20px, 1120px);
+    margin: 20px auto;
+    gap: 18px;
+  }
+
+  #center form,
+  #center > div {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  #center table,
+  #center thead,
+  #center tbody,
+  #center th,
+  #center td,
+  #center tr {
+    display: flex;
+    width: 100%;
+  }
+
+  #center thead {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+  }
+
+  #center tbody tr {
+    margin-bottom: 14px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  #center td {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 14px;
+  }
+
+  #center td::before {
+    content: attr(data-label);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(148, 163, 184, 0.9);
+  }
+
+  #center td:last-child {
+    white-space: normal;
+  }
+
+  #center td button {
+    flex: 1 1 0;
+  }
+}
