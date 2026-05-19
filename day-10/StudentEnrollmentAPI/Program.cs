@@ -21,7 +21,6 @@ builder.Services.AddOpenApi();
 var app = builder.Build();
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
 app.UseCors("AllowAll");
 
