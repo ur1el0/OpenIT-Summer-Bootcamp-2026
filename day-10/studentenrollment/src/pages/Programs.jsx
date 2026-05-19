@@ -1,39 +1,20 @@
 import React from 'react';
-import { getPrograms, createProgram, deleteProgram } from '../services/Service';
+import { useProgramContext } from '../context/ProgramContext';
 
 export default function Programs() {
-  const [programs, setPrograms] = React.useState([]);
+  const { programs, loading, addProgram, removeProgram } = useProgramContext();
   const [name, setName] = React.useState('');
-  const [loading, setLoading] = React.useState(false);
-
-  const load = async () => {
-    try {
-      const data = await getPrograms();
-      setPrograms(Array.isArray(data) ? data : []);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  React.useEffect(() => { load(); }, []);
 
   const handleCreate = async (e) => {
     e.preventDefault();
     if (!name.trim()) return;
-    setLoading(true);
-    try {
-      await createProgram({ ProgramName: name });
-      setName('');
-      await load();
-    } catch (e) {
-      console.error(e);
-    } finally { setLoading(false); }
+    await addProgram({ programName: name });
+    setName('');
   };
 
   const handleDelete = async (id) => {
     if (!confirm('Delete program?')) return;
-    await deleteProgram(id);
-    await load();
+    await removeProgram(id);
   };
 
   return (

@@ -1,34 +1,23 @@
 import React from 'react';
-import { getSections, createSection, deleteSection, getPrograms } from '../services/Service';
+import { useSectionContext } from '../context/SectionContext';
+import { useProgramContext } from '../context/ProgramContext';
 
 export default function Sections(){
-  const [sections, setSections] = React.useState([]);
-  const [programs, setPrograms] = React.useState([]);
+  const { sections, loading, addSection, removeSection } = useSectionContext();
+  const { programs } = useProgramContext();
+
   const [form, setForm] = React.useState({ Code:'', Year:2024, ProgramId: ''});
-
-  const load = async () => {
-    try{
-      const s = await getSections();
-      setSections(Array.isArray(s)?s:[]);
-      const p = await getPrograms();
-      setPrograms(Array.isArray(p)?p:[]);
-    }catch(e){console.error(e)}
-  };
-
-  React.useEffect(()=>{ load(); },[]);
 
   const handleCreate = async (e) =>{
     e.preventDefault();
-    const payload = { Code: form.Code, Year: Number(form.Year) || 0, ProgramId: form.ProgramId? Number(form.ProgramId): null };
-    await createSection(payload);
+    const payload = { code: form.Code, year: Number(form.Year) || 0, programId: form.ProgramId? Number(form.ProgramId): null };
+    await addSection(payload);
     setForm({ Code:'', Year:2024, ProgramId:'' });
-    await load();
   };
 
   const handleDelete = async (id) =>{
     if(!confirm('Delete section?')) return;
-    await deleteSection(id);
-    await load();
+    await removeSection(id);
   };
 
   return (
@@ -42,7 +31,7 @@ export default function Sections(){
             <option value="">-- Program (optional) --</option>
             {programs.map(p=> <option key={p.id ?? p.Id} value={p.id ?? p.Id}>{p.programName ?? p.ProgramName}</option>)}
           </select>
-          <button type="submit">Create</button>
+          <button type="submit" disabled={loading}>Create</button>
         </form>
       </div>
 

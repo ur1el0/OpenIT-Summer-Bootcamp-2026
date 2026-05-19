@@ -1,19 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import {
-    createStudents,
-    deleteStudents,
-    getStudents,
-    updateStudents,
-    getPrograms,
-    getSections,
-    getStudentSections,
-    getStudentGrades,
-    createStudentSection,
-    updateStudentSection,
-    createStudentGrade,
-    updateStudentGrade,
-    deleteStudentGrade
-} from '../services/Service';
+import React, { useState } from 'react';
+import { useStudentContext } from '../context/StudentContext';
+import { useProgramContext } from '../context/ProgramContext';
+import { useSectionContext } from '../context/SectionContext';
 
 const emptyStudent = {
     FirstName: "",
@@ -27,99 +15,13 @@ const emptyStudent = {
 };
 
 function Forms() {
-    const [students, setStudents] = useState([]);
+    const { students, loading, error, addStudent, editStudent, removeStudent } = useStudentContext();
+    const { programs } = useProgramContext();
+    const { sections } = useSectionContext();
+
     const [studentForm, setStudentForm] = useState(emptyStudent);
     const [editingStudentId, setEditingStudentId] = useState(null);
-    const [error, setError] = useState("");
-    const [isSaving, setIsSaving] = useState(false);
-    const [programs, setPrograms] = useState([]);
-    const [sections, setSections] = useState([]);
     const [editingLinks, setEditingLinks] = useState({ studentSectionId: null, gradeId: null, enrolledAt: null });
-
-    useEffect(() => {
-        loadStudents();
-        loadPrograms();
-        loadSections();
-    }, []);
-
-    const loadStudents = async () => {
-        try {
-            setError("");
-            const [studentData, programData, sectionData, studentSectionData, gradeData] = await Promise.all([
-                getStudents(),
-                getPrograms(),
-                getSections(),
-                getStudentSections(),
-                getStudentGrades()
-            ]);
-
-            const studentList = Array.isArray(studentData) ? studentData : [];
-            const programList = Array.isArray(programData) ? programData : [];
-            const sectionList = Array.isArray(sectionData) ? sectionData : [];
-            const studentSectionList = Array.isArray(studentSectionData) ? studentSectionData : [];
-            const gradeList = Array.isArray(gradeData) ? gradeData : [];
-
-            const programsById = new Map(programList.map((p) => [p.id ?? p.Id, p]));
-            const sectionsById = new Map(sectionList.map((s) => [s.id ?? s.Id, s]));
-
-            const studentSectionByStudentId = new Map();
-            for (const item of studentSectionList) {
-                const studentId = item.studentId ?? item.StudentId;
-                const prev = studentSectionByStudentId.get(studentId);
-                const currentId = item.id ?? item.Id ?? 0;
-                const prevId = prev?.id ?? prev?.Id ?? 0;
-                if (!prev || currentId > prevId) {
-                    studentSectionByStudentId.set(studentId, item);
-                }
-            }
-
-            const gradeByStudentSectionId = new Map();
-            for (const item of gradeList) {
-                const studentSectionId = item.student_SectionsId ?? item.Student_SectionsId;
-                const prev = gradeByStudentSectionId.get(studentSectionId);
-                const currentId = item.id ?? item.Id ?? 0;
-                const prevId = prev?.id ?? prev?.Id ?? 0;
-                if (!prev || currentId > prevId) {
-                    gradeByStudentSectionId.set(studentSectionId, item);
-                }
-            }
-
-            const enrichedStudents = studentList.map((student) => {
-                const studentId = student.id ?? student.Id;
-                const studentSection = studentSectionByStudentId.get(studentId);
-                const studentSectionId = studentSection?.id ?? studentSection?.Id ?? null;
-                const sectionId = studentSection?.sectionId ?? studentSection?.SectionId ?? null;
-                const section = studentSection?.section ?? studentSection?.Section ?? sectionsById.get(sectionId) ?? null;
-                const sectionCode = section?.code ?? section?.Code ?? "";
-                const programId = section?.programId ?? section?.ProgramId ?? null;
-                const program = section?.program ?? section?.Program ?? programsById.get(programId) ?? null;
-                const programName = program?.programName ?? program?.ProgramName ?? "";
-                const gradeRecord = studentSectionId ? gradeByStudentSectionId.get(studentSectionId) : null;
-                const gradeValue = gradeRecord ? (gradeRecord.grade ?? gradeRecord.Grade ?? "") : "";
-
-                return {
-                    ...student,
-                    Section: sectionCode,
-                    Program: programName,
-                    Grade: gradeValue,
-                    _sectionId: sectionId,
-                    _programId: programId,
-                    _studentSectionId: studentSectionId,
-                    _studentSectionEnrolledAt: studentSection?.enrolledAt ?? studentSection?.EnrolledAt ?? null,
-                    _gradeId: gradeRecord?.id ?? gradeRecord?.Id ?? null,
-                };
-            });
-
-            setPrograms(programList);
-            setSections(sectionList);
-            setStudents(enrichedStudents);
-        } catch (fetchError) {
-            setError(fetchError.message || "Failed to load students.");
-        }
-    };
-
-    const loadPrograms = async () => {};
-    const loadSections = async () => {};
 
     const handleChange = (event) => {
         const { name, value, type, checked } = event.target;
@@ -128,150 +30,92 @@ function Forms() {
         if (name === "Section") {
             const selectedSection = sections.find((s) => String(s.id ?? s.Id) === String(val));
             const selectedProgramId = selectedSection?.programId ?? selectedSection?.ProgramId ?? "";
-            setStudentForm((prevStudents) => ({
-                ...prevStudents,
+            setStudentForm((prev) => ({
+                ...prev,
                 Section: val,
                 Program: selectedProgramId ? String(selectedProgramId) : "",
             }));
             return;
         }
 
-        setStudentForm((prevStudents) => ({
-            ...prevStudents,
+        setStudentForm((prev) => ({
+            ...prev,
             [name]: val,
         }));
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        try {
-            setIsSaving(true);
-            setError("");
 
-            const payload = {
-                FirstName: studentForm.FirstName,
-                LastName: studentForm.LastName,
-                Year: Number(studentForm.Year) || 1,
-                Gender: studentForm.Gender || "",
-                Enrolled: studentForm.Enrolled !== false,
-            };
+        const payload = {
+            firstName: studentForm.FirstName,
+            lastName: studentForm.LastName,
+            year: Number(studentForm.Year) || 1,
+            gender: studentForm.Gender || "",
+            enrolled: studentForm.Enrolled !== false,
+        };
 
-            if (editingStudentId !== null) {
-                await updateStudents(editingStudentId, payload);
-
-                const selectedSectionId = studentForm.Section ? Number(studentForm.Section) : null;
-                let activeStudentSectionId = editingLinks.studentSectionId;
-
-                if (selectedSectionId) {
-                    if (editingLinks.studentSectionId) {
-                        await updateStudentSection(editingLinks.studentSectionId, {
-                            StudentId: editingStudentId,
-                            SectionId: selectedSectionId,
-                            EnrolledAt: editingLinks.enrolledAt ?? new Date().toISOString(),
-                        });
-                    } else {
-                        const createdLink = await createStudentSection({
-                            StudentId: editingStudentId,
-                            SectionId: selectedSectionId,
-                        });
-                        activeStudentSectionId = createdLink?.id ?? createdLink?.Id ?? null;
-                    }
-                }
-
-                if (studentForm.Grade !== "" && activeStudentSectionId) {
-                    const gradePayload = {
-                        StudentId: editingStudentId,
-                        Student_SectionsId: activeStudentSectionId,
-                        grade: Number(studentForm.Grade),
-                    };
-
-                    if (editingLinks.gradeId) {
-                        await updateStudentGrade(editingLinks.gradeId, gradePayload);
-                    } else {
-                        await createStudentGrade(gradePayload);
-                    }
-                } else if (studentForm.Grade === "" && editingLinks.gradeId) {
-                    await deleteStudentGrade(editingLinks.gradeId);
-                }
-            } else {
-                const created = await createStudents(payload);
-                const studentId = created?.id ?? created?.Id;
-
-                if (studentForm.Section && studentId) {
-                    const sectionId = Number(studentForm.Section);
-                    const studentSection = await createStudentSection({ StudentId: studentId, SectionId: sectionId });
-
-                    if (studentForm.Grade) {
-                        await createStudentGrade({
-                            StudentId: studentId,
-                            Student_SectionsId: studentSection?.id ?? studentSection?.Id,
-                            grade: Number(studentForm.Grade),
-                        });
-                    }
-                }
-            }
-
-            await loadStudents();
+        if (editingStudentId !== null) {
+            await editStudent(
+                editingStudentId,
+                payload,
+                studentForm.Section,
+                studentForm.Grade,
+                editingLinks.studentSectionId,
+                editingLinks.enrolledAt,
+                editingLinks.gradeId
+            );
+            handleCancelEdit();
+        } else {
+            await addStudent(payload, studentForm.Section, studentForm.Grade);
             setStudentForm(emptyStudent);
-            setEditingStudentId(null);
-            setEditingLinks({ studentSectionId: null, gradeId: null, enrolledAt: null });
-        } catch (submitError) {
-            setError(submitError.message || "Failed to save student.");
-        } finally {
-            setIsSaving(false);
         }
     };
 
     const handleEdit = (student) => {
-        const studentId = student.id ?? student.Id ?? null;
-        setEditingStudentId(studentId);
+        const studentId = student.id ?? student.Id;
         setStudentForm({
-            ...emptyStudent,
-            FirstName: student.FirstName ?? student.firstName ?? "",
-            LastName: student.LastName ?? student.lastName ?? "",
+            FirstName: student.firstName ?? student.FirstName ?? "",
+            LastName: student.lastName ?? student.LastName ?? "",
             Section: student._sectionId ? String(student._sectionId) : "",
             Program: student._programId ? String(student._programId) : "",
-            Grade: student.Grade ?? student.grade ?? "",
-            Year: student.Year ?? student.year ?? 1,
-            Gender: student.Gender ?? student.gender ?? "",
-            Enrolled: student.Enrolled ?? student.enrolled ?? true,
+            Grade: student.Grade !== "" && student.Grade !== undefined ? String(student.Grade) : "",
+            Year: student.year ?? student.Year ?? 1,
+            Gender: student.gender ?? student.Gender ?? "",
+            Enrolled: student.enrolled ?? student.Enrolled ?? false,
         });
+        setEditingStudentId(studentId);
         setEditingLinks({
-            studentSectionId: student._studentSectionId ?? null,
-            gradeId: student._gradeId ?? null,
-            enrolledAt: student._studentSectionEnrolledAt ?? null,
+            studentSectionId: student._studentSectionId,
+            gradeId: student._gradeId,
+            enrolledAt: student._studentSectionEnrolledAt,
         });
-        setError("");
     };
 
     const handleDelete = async (studentId) => {
-        try {
-            setError("");
-            await deleteStudents(studentId);
-            await loadStudents();
-            if (editingStudentId === studentId) {
-                setEditingStudentId(null);
-                setStudentForm(emptyStudent);
-            }
-        } catch (deleteError) {
-            setError(deleteError.message || "Failed to delete student.");
+        if (window.confirm("Are you sure you want to delete this student?")) {
+            await removeStudent(studentId);
         }
     };
 
     const handleCancelEdit = () => {
-        setEditingStudentId(null);
         setStudentForm(emptyStudent);
+        setEditingStudentId(null);
         setEditingLinks({ studentSectionId: null, gradeId: null, enrolledAt: null });
-        setError("");
     };
 
     const getStudentId = (student) => student.id ?? student.Id;
     const getStudentValue = (student, key) => student[key] ?? student[key.charAt(0).toLowerCase() + key.slice(1)] ?? "";
 
+    if (loading && students.length === 0) {
+        return <div id="center"><p>Loading...</p></div>;
+    }
+
     return (
         <section id="center">
             <div>
                 <h2>Student List</h2>
+                {error && <p role="alert" style={{color: 'red'}}>{error}</p>}
                 {students.length === 0 ? (
                     <p>No students found.</p>
                 ) : (
@@ -311,7 +155,7 @@ function Forms() {
                                             <button type='button' className="action-edit" onClick={() => handleEdit(student)}>
                                                 Edit
                                             </button>
-                                            <button type='button' className="action-delete" onClick={() => handleDelete(studentId)}>
+                                            <button type='button' className="action-edit" onClick={() => handleDelete(studentId)} style={{backgroundColor: '#e74c3c', marginLeft: 8}}>
                                                 Delete
                                             </button>
                                         </td>
@@ -325,8 +169,6 @@ function Forms() {
 
             <form onSubmit={handleSubmit}>
                 <h2>{editingStudentId !== null ? "Edit Student" : "Add Student"}</h2>
-
-                {error ? <p role="alert">{error}</p> : null}
 
                 <div className="form-row">
                     <input
@@ -356,7 +198,7 @@ function Forms() {
                         ))}
                     </select>
 
-                    <select name="Program" value={studentForm.Program} onChange={handleChange}>
+                    <select name="Program" value={studentForm.Program} onChange={handleChange} disabled>
                         <option value="">-- Select Program --</option>
                         {programs.map((program) => (
                             <option key={program.id ?? program.Id} value={program.id ?? program.Id}>
@@ -399,12 +241,12 @@ function Forms() {
                     </label>
                 </div>
 
-                <button type='submit' disabled={isSaving}>
-                    {isSaving ? "Saving..." : editingStudentId !== null ? "Update Student" : "Input Student"}
+                <button type='submit' disabled={loading}>
+                    {loading ? "Saving..." : editingStudentId !== null ? "Update Student" : "Input Student"}
                 </button>
 
                 {editingStudentId !== null ? (
-                    <button type='button' onClick={handleCancelEdit}>
+                    <button type='button' onClick={handleCancelEdit} style={{marginLeft: 12, backgroundColor: '#95a5a6'}}>
                         Cancel
                     </button>
                 ) : null}
