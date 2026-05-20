@@ -41,7 +41,7 @@ public class AuthController : ControllerBase
 
 	[HttpPost("login")]
 	[AllowAnonymous]
-	public async Task<IActionResult> Login([FromQuery] bool useCookies = true, [FromBody] AuthRequest request = default!)
+	public async Task<IActionResult> Login([FromQuery(Name = "useCookies")] bool useCookies = true, [FromBody] AuthRequest request = default!)
 	{
 		if (!useCookies)
 		{

@@ -3,5 +3,10 @@
     "UserName": "roosc",
     "PasswordHash": "AQAAAAIAAYagAAAAEK29tjvm\u002BNXeq9gpCpwWPcuYBc5ZEGsQr6eiW5TdT71yd1lVRka4CWyErTSVJ9HHEg==",
     "CreatedAt": "2026-05-20T05:49:48.9860671Z"
+  },
+  {
+    "UserName": "kurt",
+    "PasswordHash": "AQAAAAIAAYagAAAAEHgZIqh5zT6I8QH8PAOuDYr/DfkdklL9uOBTpuLCPoyraOEQYz9XevHwvghImrsorA==",
+    "CreatedAt": "2026-05-20T06:08:39.1588665Z"
   }
 ]

@@ -215,6 +215,10 @@ select {
   gap: 12px;
 }
 
+.data-row--no-actions {
+  grid-template-columns: 1.4fr 0.6fr 0.8fr 1fr 1fr 0.8fr 0.9fr;
+}
+
 .data-header {
   background: #1f2448;
   color: #fff;
@@ -440,6 +444,7 @@ select {
 
 .auth-submit,
 .auth-switch,
+.dashboard-bar__login,
 .dashboard-bar__logout {
   border: 0;
   cursor: pointer;
@@ -448,6 +453,7 @@ select {
 
 .auth-submit:hover,
 .auth-switch:hover,
+.dashboard-bar__login:hover,
 .dashboard-bar__logout:hover {
   transform: translateY(-1px);
 }
@@ -500,12 +506,27 @@ select {
   font-size: 1rem;
 }
 
+.dashboard-bar__actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dashboard-bar__login,
 .dashboard-bar__logout {
   padding: 10px 16px;
   border-radius: 999px;
-  background: #cf2339;
   color: #fff;
   font-weight: 800;
+}
+
+.dashboard-bar__login {
+  background: #1f2448;
+  box-shadow: 0 12px 24px rgba(31, 36, 72, 0.18);
+}
+
+.dashboard-bar__logout {
+  background: #cf2339;
   box-shadow: 0 12px 24px rgba(207, 35, 57, 0.22);
 }
 

@@ -9,10 +9,11 @@ import { useSectionContext } from './context/SectionContext';
 import { ProgramProvider } from './context/ProgramContext';
 import { SectionProvider } from './context/SectionContext';
 import { StudentProvider } from './context/StudentContext';
-import AuthPage from './pages/AuthPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import { getCurrentUser, loginUser, logoutUser, registerUser } from './services/Service';
 
-const StudentsTab = () => {
+const StudentsTab = ({ authUser, onRequireAuth }) => {
   const { students, removeStudent, addStudent, editStudent } = useStudentContext()
     const { programs } = useProgramContext()
     const { sections } = useSectionContext()
@@ -26,7 +27,7 @@ const StudentsTab = () => {
       firstName: student.firstName || student.FirstName || '',
       lastName: student.lastName || student.LastName || '',
       name: `${student.firstName || student.FirstName} ${student.lastName || student.LastName}`,
-      year: student.yearLevel || student.YearLevel || 1,
+      year: student.year || student.Year || 1,
       gender: student.gender || student.Gender || 'Other',
       program: student.Program || '',
       section: student.Section || '',
@@ -48,6 +49,11 @@ const StudentsTab = () => {
     const uniquePrograms = Array.from(new Set(mappedStudents.map((s) => s.program).filter(Boolean))).sort()
   
     const handleDelete = (id) => {
+      if (!authUser) {
+        onRequireAuth();
+        return;
+      }
+
       if(window.confirm('Delete this student?')) {
         removeStudent(id);
       }
@@ -58,6 +64,11 @@ const StudentsTab = () => {
     const [editingStudent, setEditingStudent] = useState(null);
 
     const handleEditStart = (student) => {
+      if (!authUser) {
+        onRequireAuth();
+        return;
+      }
+
       setEditingStudent(student);
       setShowAddForm(true);
       setFormData({
@@ -75,7 +86,7 @@ const StudentsTab = () => {
       const payload = {
         firstName: formData.firstName,
         lastName: formData.lastName,
-        yearLevel: parseInt(formData.yearLevel, 10),
+        year: parseInt(formData.yearLevel, 10),
         gender: formData.gender,
       };
 
@@ -129,7 +140,13 @@ const StudentsTab = () => {
             </div>
 
             <div className="add-student-section" style={{ padding: '0 20px 20px' }}>
-                <button onClick={() => setShowAddForm(!showAddForm)} style={{ padding: '8px 16px', background: '#007bff', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+                <button onClick={() => {
+                  if (!authUser) {
+                    onRequireAuth();
+                    return;
+                  }
+                  setShowAddForm(!showAddForm);
+                }} style={{ padding: '8px 16px', background: '#007bff', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
               {showAddForm ? 'Cancel' : '+ Add New Student'}
                 </button>
                 {showAddForm && (
@@ -152,7 +169,7 @@ const StudentsTab = () => {
             </div>
 
             <div className="students-list">
-                <div className="data-row data-header">
+                <div className={`data-row data-header${authUser ? '' : ' data-row--no-actions'}`}>
                 <div className="data-cell">Name</div>
                 <div className="data-cell">Year</div>
                 <div className="data-cell">Gender</div>
@@ -160,10 +177,10 @@ const StudentsTab = () => {
                 <div className="data-cell">Section</div>
                 <div className="data-cell">Avg Grade</div>
                 <div className="data-cell">Status</div>
-                <div className="data-cell">Actions</div>
+                {authUser && <div className="data-cell">Actions</div>}
                 </div>
                 {filteredStudents.map((student) => (
-                <div className="data-row" key={student.id}>
+                <div className={`data-row${authUser ? '' : ' data-row--no-actions'}`} key={student.id}>
                     <div className="data-cell">{student.name}</div>
                     <div className="data-cell">{student.year}</div>
                     <div className="data-cell">{student.gender}</div>
@@ -175,10 +192,10 @@ const StudentsTab = () => {
                             {student.enrolled ? 'Enrolled' : 'Not Enrolled'}
                         </span>
                     </div>
-                    <div className="data-cell" style={{ display: 'flex', gap: '8px' }}>
+                    {authUser && <div className="data-cell" style={{ display: 'flex', gap: '8px' }}>
                       <button onClick={() => handleEditStart(student)} style={{ padding: '4px 8px', background: '#1f2448', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Update</button>
                         <button onClick={() => handleDelete(student.id)} style={{ padding: '4px 8px', background: '#dc3545', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Delete</button>
-                    </div>
+                    </div>}
                 </div>
                 ))}
             </div>
@@ -295,7 +312,7 @@ const SectionsTab = () => {
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('students');
-  const [authMode, setAuthMode] = useState('login');
+  const [authMode, setAuthMode] = useState(null);
   const [authUser, setAuthUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [authSubmitting, setAuthSubmitting] = useState(false);
@@ -326,6 +343,7 @@ const App = () => {
       if (authMode === 'login') {
         const result = await loginUser({ username, password });
         setAuthUser(result);
+        setAuthMode(null);
       } else {
         await registerUser({ username, password });
         setAuthMode('login');
@@ -344,10 +362,16 @@ const App = () => {
     } finally {
       setAuthUser(null);
       setActiveTab('students');
-      setAuthMode('login');
+      setAuthMode(null);
       setAuthInfo('');
       setAuthError('');
     }
+  };
+
+  const openAuthPage = (mode, info = '') => {
+    setAuthError('');
+    setAuthInfo(info);
+    setAuthMode(mode);
   };
 
   if (authLoading) {
@@ -358,16 +382,22 @@ const App = () => {
     );
   }
 
-  if (!authUser) {
+  if (!authUser && authMode === 'login') {
     return (
-      <AuthPage
-        key={authMode}
-        mode={authMode}
-        onToggleMode={() => {
-          setAuthError('');
-          setAuthInfo('');
-          setAuthMode((currentMode) => (currentMode === 'login' ? 'register' : 'login'));
-        }}
+      <LoginPage
+        onToggleMode={() => openAuthPage('register')}
+        onSubmit={handleAuthSubmit}
+        loading={authSubmitting}
+        error={authError}
+        info={authInfo}
+      />
+    );
+  }
+
+  if (!authUser && authMode === 'register') {
+    return (
+      <RegisterPage
+        onToggleMode={() => openAuthPage('login')}
         onSubmit={handleAuthSubmit}
         loading={authSubmitting}
         error={authError}
@@ -384,22 +414,38 @@ const App = () => {
             <Header />
             <div className="dashboard-bar">
               <div>
-                <span className="dashboard-bar__label">Signed in as</span>
-                <strong>{authUser.userName || authUser.UserName}</strong>
+                <span className="dashboard-bar__label">{authUser ? 'Signed in as' : 'Public access'}</span>
+                <strong>{authUser ? (authUser.userName || authUser.UserName) : 'Student records are view-only'}</strong>
               </div>
-              <button className="dashboard-bar__logout" onClick={handleLogout} type="button">
-                Logout
-              </button>
+              {authUser ? (
+                <button className="dashboard-bar__logout" onClick={handleLogout} type="button">
+                  Logout
+                </button>
+              ) : (
+                <div className="dashboard-bar__actions">
+                  <button className="dashboard-bar__login" onClick={() => openAuthPage('login')} type="button">
+                    Login
+                  </button>
+                  <button className="dashboard-bar__logout" onClick={() => openAuthPage('register')} type="button">
+                    Register
+                  </button>
+                </div>
+              )}
             </div>
             <div style={{ display: 'flex', gap: '10px', padding: '20px 20px 0 20px', borderBottom: '1px solid #ddd' }}>
               <button onClick={() => setActiveTab('students')} style={{ padding: '10px 20px', border: 'none', background: activeTab === 'students' ? '#007bff' : 'transparent', color: activeTab === 'students' ? '#fff' : '#333', cursor: 'pointer', borderRadius: '4px 4px 0 0' }}>Students</button>
-              <button onClick={() => setActiveTab('programs')} style={{ padding: '10px 20px', border: 'none', background: activeTab === 'programs' ? '#007bff' : 'transparent', color: activeTab === 'programs' ? '#fff' : '#333', cursor: 'pointer', borderRadius: '4px 4px 0 0' }}>Programs</button>
-              <button onClick={() => setActiveTab('sections')} style={{ padding: '10px 20px', border: 'none', background: activeTab === 'sections' ? '#007bff' : 'transparent', color: activeTab === 'sections' ? '#fff' : '#333', cursor: 'pointer', borderRadius: '4px 4px 0 0' }}>Sections</button>
+              {authUser && <button onClick={() => setActiveTab('programs')} style={{ padding: '10px 20px', border: 'none', background: activeTab === 'programs' ? '#007bff' : 'transparent', color: activeTab === 'programs' ? '#fff' : '#333', cursor: 'pointer', borderRadius: '4px 4px 0 0' }}>Programs</button>}
+              {authUser && <button onClick={() => setActiveTab('sections')} style={{ padding: '10px 20px', border: 'none', background: activeTab === 'sections' ? '#007bff' : 'transparent', color: activeTab === 'sections' ? '#fff' : '#333', cursor: 'pointer', borderRadius: '4px 4px 0 0' }}>Sections</button>}
             </div>
 
-            {activeTab === 'students' && <StudentsTab />}
-            {activeTab === 'programs' && <ProgramsTab />}
-            {activeTab === 'sections' && <SectionsTab />}
+            {activeTab === 'students' && (
+              <StudentsTab
+                authUser={authUser}
+                onRequireAuth={() => openAuthPage('login', 'Sign in to add, update, or delete students.')}
+              />
+            )}
+            {authUser && activeTab === 'programs' && <ProgramsTab />}
+            {authUser && activeTab === 'sections' && <SectionsTab />}
 
             <Footer />
           </>

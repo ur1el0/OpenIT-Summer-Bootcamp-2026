@@ -14,7 +14,16 @@ const authFetch = (path, options = {}) => fetch(`${AUTH_URL}${path}`, {
 export const handleResponse = async (response) => {
     if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(errorText || `Request failed with status ${response.status}`);
+        let errorMessage = errorText;
+
+        try {
+            const errorBody = JSON.parse(errorText);
+            errorMessage = errorBody.message || errorMessage;
+        } catch {
+            // Keep the plain response text when the server did not return JSON.
+        }
+
+        throw new Error(errorMessage || `Request failed with status ${response.status}`);
     }
 
     if (response.status === 204) {

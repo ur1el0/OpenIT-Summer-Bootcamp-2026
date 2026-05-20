@@ -197,9 +197,7 @@ export const StudentProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        if (programs.length > 0 || sections.length > 0) {
-            loadStudents();
-        }
+        loadStudents();
     }, [programs, sections]);
 
     return (
