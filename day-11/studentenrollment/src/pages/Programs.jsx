@@ -18,18 +18,18 @@ export default function Programs() {
   };
 
   return (
-    <div id="center">
-      <div>
+    <div id="center" className="page-grid">
+      <div className="card">
         <h2>Programs</h2>
-        <form onSubmit={handleCreate} style={{display:'flex',gap:12,alignItems:'center'}}>
+        <form onSubmit={handleCreate} className="form-row">
           <input placeholder="Program name" value={name} onChange={e=>setName(e.target.value)} />
-          <button type="submit" disabled={loading}>{loading? 'Saving...':'Add'}</button>
+          <button className="btn btn-primary" type="submit" disabled={loading}>{loading? 'Saving...':'Add'}</button>
         </form>
       </div>
 
-      <div>
+      <div className="card table-card">
         <h2>Existing Programs</h2>
-        <table>
+        <table className="data-table">
           <thead>
             <tr><th>Name</th><th></th></tr>
           </thead>
@@ -38,7 +38,7 @@ export default function Programs() {
               <tr key={p.id ?? p.Id}>
                 <td>{p.programName ?? p.ProgramName}</td>
                 <td>
-                  <button onClick={()=>handleDelete(p.id ?? p.Id)}>Delete</button>
+                  <button className="btn btn-danger btn-sm" onClick={()=>handleDelete(p.id ?? p.Id)}>Delete</button>
                 </td>
               </tr>
             ))}

@@ -108,18 +108,18 @@ function Forms() {
     const getStudentValue = (student, key) => student[key] ?? student[key.charAt(0).toLowerCase() + key.slice(1)] ?? "";
 
     if (loading && students.length === 0) {
-        return <div id="center"><p>Loading...</p></div>;
+        return <div id="center" className="page-grid"><p>Loading...</p></div>;
     }
 
     return (
-        <section id="center">
-            <div>
+        <section id="center" className="page-grid">
+            <div className="card table-card">
                 <h2>Student List</h2>
-                {error && <p role="alert" style={{color: 'red'}}>{error}</p>}
+                {error && <p role="alert" className="form-error">{error}</p>}
                 {students.length === 0 ? (
                     <p>No students found.</p>
                 ) : (
-                    <table>
+                    <table className="data-table">
                         <thead>
                             <tr>
                                 <th>First Name</th>
@@ -152,10 +152,10 @@ function Forms() {
                                         </td>
                                         <td>{getStudentValue(student, 'Grade')}</td>
                                         <td>
-                                            <button type='button' className="action-edit" onClick={() => handleEdit(student)}>
+                                            <button type='button' className="btn btn-ghost btn-sm" onClick={() => handleEdit(student)}>
                                                 Edit
                                             </button>
-                                            <button type='button' className="action-edit" onClick={() => handleDelete(studentId)} style={{backgroundColor: '#e74c3c', marginLeft: 8}}>
+                                            <button type='button' className="btn btn-danger btn-sm" onClick={() => handleDelete(studentId)}>
                                                 Delete
                                             </button>
                                         </td>
@@ -167,7 +167,7 @@ function Forms() {
                 )}
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="card form-card">
                 <h2>{editingStudentId !== null ? "Edit Student" : "Add Student"}</h2>
 
                 <div className="form-row">
@@ -226,7 +226,7 @@ function Forms() {
                     />
                 </div>
 
-                <div className="form-row" style={{ alignItems: 'center' }}>
+                <div className="form-row form-row--center">
                     <input
                         type='text'
                         value={studentForm.Gender}
@@ -235,18 +235,18 @@ function Forms() {
                         placeholder='Gender'
                     />
 
-                    <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <label className="checkbox-row">
                         <input type="checkbox" name="Enrolled" checked={!!studentForm.Enrolled} onChange={handleChange} />
                         <span className="muted">Enrolled</span>
                     </label>
                 </div>
 
-                <button type='submit' disabled={loading}>
+                <button className="btn btn-primary" type='submit' disabled={loading}>
                     {loading ? "Saving..." : editingStudentId !== null ? "Update Student" : "Input Student"}
                 </button>
 
                 {editingStudentId !== null ? (
-                    <button type='button' onClick={handleCancelEdit} style={{marginLeft: 12, backgroundColor: '#95a5a6'}}>
+                    <button className="btn btn-muted" type='button' onClick={handleCancelEdit}>
                         Cancel
                     </button>
                 ) : null}

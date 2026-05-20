@@ -110,7 +110,7 @@ const StudentsTab = ({ authUser, onRequireAuth }) => {
     };
 
     return (
-        <div style={{ marginTop: '20px' }}>
+      <div className="page-surface">
             <Stats students={mappedStudents} programs={programs} />
 
             <div className="filters-section">
@@ -139,31 +139,34 @@ const StudentsTab = ({ authUser, onRequireAuth }) => {
                 </div>
             </div>
 
-            <div className="add-student-section" style={{ padding: '0 20px 20px' }}>
-                <button onClick={() => {
+            <div className="add-student-section">
+                <button
+                  className="btn btn-primary"
+                  onClick={() => {
                   if (!authUser) {
                     onRequireAuth();
                     return;
                   }
                   setShowAddForm(!showAddForm);
-                }} style={{ padding: '8px 16px', background: '#007bff', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+                }}
+                >
               {showAddForm ? 'Cancel' : '+ Add New Student'}
                 </button>
                 {showAddForm && (
-                <form onSubmit={handleAddSubmit} style={{ marginTop: '16px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                    <input required placeholder="First Name" value={formData.firstName} onChange={e => setFormData({...formData, firstName: e.target.value})} style={{ padding: '8px' }} />
-                    <input required placeholder="Last Name" value={formData.lastName} onChange={e => setFormData({...formData, lastName: e.target.value})} style={{ padding: '8px' }} />
-                    <select value={formData.gender} onChange={e => setFormData({...formData, gender: e.target.value})} style={{ padding: '8px' }}>
+                <form onSubmit={handleAddSubmit} className="inline-form">
+                    <input required placeholder="First Name" value={formData.firstName} onChange={e => setFormData({...formData, firstName: e.target.value})} />
+                    <input required placeholder="Last Name" value={formData.lastName} onChange={e => setFormData({...formData, lastName: e.target.value})} />
+                    <select value={formData.gender} onChange={e => setFormData({...formData, gender: e.target.value})}>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
-                    <input type="number" min="1" max="4" required placeholder="Year" value={formData.yearLevel} onChange={e => setFormData({...formData, yearLevel: e.target.value})} style={{ padding: '8px' }} />
-                    <select value={formData.sectionId} onChange={e => setFormData({...formData, sectionId: e.target.value})} style={{ padding: '8px' }}>
+                    <input type="number" min="1" max="4" required placeholder="Year" value={formData.yearLevel} onChange={e => setFormData({...formData, yearLevel: e.target.value})} />
+                    <select value={formData.sectionId} onChange={e => setFormData({...formData, sectionId: e.target.value})}>
                         <option value="">No Section</option>
                         {sections.map(s => <option key={s.id || s.Id} value={s.id || s.Id}>{s.code || s.Code}</option>)}
                     </select>
-                    <input type="number" step="0.01" placeholder="Initial Grade" value={formData.grade} onChange={e => setFormData({...formData, grade: e.target.value})} style={{ padding: '8px' }} />
-                    <button type="submit" style={{ padding: '8px 16px', background: '#28a745', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>{editingStudent ? 'Update' : 'Save'}</button>
+                    <input type="number" step="0.01" placeholder="Initial Grade" value={formData.grade} onChange={e => setFormData({...formData, grade: e.target.value})} />
+                    <button className="btn btn-accent" type="submit">{editingStudent ? 'Update' : 'Save'}</button>
                 </form>
                 )}
             </div>
@@ -192,9 +195,9 @@ const StudentsTab = ({ authUser, onRequireAuth }) => {
                             {student.enrolled ? 'Enrolled' : 'Not Enrolled'}
                         </span>
                     </div>
-                    {authUser && <div className="data-cell" style={{ display: 'flex', gap: '8px' }}>
-                      <button onClick={() => handleEditStart(student)} style={{ padding: '4px 8px', background: '#1f2448', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Update</button>
-                        <button onClick={() => handleDelete(student.id)} style={{ padding: '4px 8px', background: '#dc3545', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Delete</button>
+                    {authUser && <div className="data-cell action-cell">
+                      <button className="btn btn-ghost btn-sm" onClick={() => handleEditStart(student)}>Update</button>
+                        <button className="btn btn-danger btn-sm" onClick={() => handleDelete(student.id)}>Delete</button>
                     </div>}
                 </div>
                 ))}
@@ -220,34 +223,38 @@ const ProgramsTab = () => {
     };
   
     return (
-      <div style={{ padding: '20px' }}>
-        <h2>Programs Management</h2>
-        <form onSubmit={handleCreate} style={{display:'flex',gap:'12px',alignItems:'center', marginBottom: '20px'}}>
-          <input placeholder="Program name" value={name} onChange={e=>setName(e.target.value)} style={{ padding: '8px', minWidth: '200px' }} />
-          <button type="submit" disabled={loading} style={{ padding: '8px 16px', background: '#28a745', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-            {loading ? 'Saving...' : 'Add Program'}
-          </button>
-        </form>
+      <div className="page-grid">
+        <div className="card">
+          <h2>Programs Management</h2>
+          <form onSubmit={handleCreate} className="form-row">
+            <input placeholder="Program name" value={name} onChange={e=>setName(e.target.value)} />
+            <button className="btn btn-primary" type="submit" disabled={loading}>
+              {loading ? 'Saving...' : 'Add Program'}
+            </button>
+          </form>
+        </div>
   
-        <table style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr style={{ borderBottom: '1px solid #ccc' }}>
-              <th style={{ padding: '10px' }}>Program Name</th>
-              <th style={{ padding: '10px' }}>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {programs.map(p=> (
-              <tr key={p.id ?? p.Id} style={{ borderBottom: '1px solid #eee' }}>
-                <td style={{ padding: '10px' }}>{p.programName ?? p.ProgramName}</td>
-                <td style={{ padding: '10px' }}>
-                  <button onClick={()=>handleDelete(p.id ?? p.Id)} style={{ padding: '4px 8px', background: '#dc3545', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Delete</button>
-                </td>
+        <div className="card table-card">
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th>Program Name</th>
+                <th>Actions</th>
               </tr>
-            ))}
-            {programs.length === 0 && <tr><td colSpan="2" style={{ padding: '10px' }}>No programs found.</td></tr>}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {programs.map(p=> (
+                <tr key={p.id ?? p.Id}>
+                  <td>{p.programName ?? p.ProgramName}</td>
+                  <td>
+                    <button className="btn btn-danger btn-sm" onClick={()=>handleDelete(p.id ?? p.Id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+              {programs.length === 0 && <tr><td colSpan="2">No programs found.</td></tr>}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
 };
@@ -272,40 +279,44 @@ const SectionsTab = () => {
     };
   
     return (
-      <div style={{ padding: '20px' }}>
-        <h2>Sections Management</h2>
-        <form onSubmit={handleCreate} style={{display:'flex',gap:'12px',alignItems:'center', marginBottom: '20px'}}>
-          <input placeholder="Section Code (e.g. IT-101)" value={code} onChange={e=>setCode(e.target.value)} style={{ padding: '8px', minWidth: '200px' }} />
-          <select value={programId} onChange={e=>setProgramId(e.target.value)} style={{ padding: '8px' }} required>
-            <option value="">Select Program</option>
-            {programs.map(p => <option key={p.id ?? p.Id} value={p.id ?? p.Id}>{p.programName ?? p.ProgramName}</option>)}
-          </select>
-          <button type="submit" disabled={loading} style={{ padding: '8px 16px', background: '#28a745', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-            {loading ? 'Saving...' : 'Add Section'}
-          </button>
-        </form>
+      <div className="page-grid">
+        <div className="card">
+          <h2>Sections Management</h2>
+          <form onSubmit={handleCreate} className="form-row">
+            <input placeholder="Section Code (e.g. IT-101)" value={code} onChange={e=>setCode(e.target.value)} />
+            <select value={programId} onChange={e=>setProgramId(e.target.value)} required>
+              <option value="">Select Program</option>
+              {programs.map(p => <option key={p.id ?? p.Id} value={p.id ?? p.Id}>{p.programName ?? p.ProgramName}</option>)}
+            </select>
+            <button className="btn btn-primary" type="submit" disabled={loading}>
+              {loading ? 'Saving...' : 'Add Section'}
+            </button>
+          </form>
+        </div>
   
-        <table style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr style={{ borderBottom: '1px solid #ccc' }}>
-              <th style={{ padding: '10px' }}>Section Code</th>
-              <th style={{ padding: '10px' }}>Program ID</th>
-              <th style={{ padding: '10px' }}>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sections.map(s => (
-              <tr key={s.id ?? s.Id} style={{ borderBottom: '1px solid #eee' }}>
-                <td style={{ padding: '10px' }}>{s.code ?? s.Code}</td>
-                <td style={{ padding: '10px' }}>{programs.find(p => (p.id ?? p.Id) === (s.programId ?? s.ProgramId))?.programName ?? (s.programId ?? s.ProgramId)}</td>
-                <td style={{ padding: '10px' }}>
-                  <button onClick={()=>handleDelete(s.id ?? s.Id)} style={{ padding: '4px 8px', background: '#dc3545', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Delete</button>
-                </td>
+        <div className="card table-card">
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th>Section Code</th>
+                <th>Program ID</th>
+                <th>Actions</th>
               </tr>
-            ))}
-            {sections.length === 0 && <tr><td colSpan="3" style={{ padding: '10px' }}>No sections found.</td></tr>}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {sections.map(s => (
+                <tr key={s.id ?? s.Id}>
+                  <td>{s.code ?? s.Code}</td>
+                  <td>{programs.find(p => (p.id ?? p.Id) === (s.programId ?? s.ProgramId))?.programName ?? (s.programId ?? s.ProgramId)}</td>
+                  <td>
+                    <button className="btn btn-danger btn-sm" onClick={()=>handleDelete(s.id ?? s.Id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+              {sections.length === 0 && <tr><td colSpan="3">No sections found.</td></tr>}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
 };
@@ -432,10 +443,10 @@ const App = () => {
                 </div>
               )}
             </div>
-            <div style={{ display: 'flex', gap: '10px', padding: '20px 20px 0 20px', borderBottom: '1px solid #ddd' }}>
-              <button onClick={() => setActiveTab('students')} style={{ padding: '10px 20px', border: 'none', background: activeTab === 'students' ? '#007bff' : 'transparent', color: activeTab === 'students' ? '#fff' : '#333', cursor: 'pointer', borderRadius: '4px 4px 0 0' }}>Students</button>
-              {authUser && <button onClick={() => setActiveTab('programs')} style={{ padding: '10px 20px', border: 'none', background: activeTab === 'programs' ? '#007bff' : 'transparent', color: activeTab === 'programs' ? '#fff' : '#333', cursor: 'pointer', borderRadius: '4px 4px 0 0' }}>Programs</button>}
-              {authUser && <button onClick={() => setActiveTab('sections')} style={{ padding: '10px 20px', border: 'none', background: activeTab === 'sections' ? '#007bff' : 'transparent', color: activeTab === 'sections' ? '#fff' : '#333', cursor: 'pointer', borderRadius: '4px 4px 0 0' }}>Sections</button>}
+            <div className="tab-bar">
+              <button onClick={() => setActiveTab('students')} className={activeTab === 'students' ? 'tab-button is-active' : 'tab-button'}>Students</button>
+              {authUser && <button onClick={() => setActiveTab('programs')} className={activeTab === 'programs' ? 'tab-button is-active' : 'tab-button'}>Programs</button>}
+              {authUser && <button onClick={() => setActiveTab('sections')} className={activeTab === 'sections' ? 'tab-button is-active' : 'tab-button'}>Sections</button>}
             </div>
 
             {activeTab === 'students' && (

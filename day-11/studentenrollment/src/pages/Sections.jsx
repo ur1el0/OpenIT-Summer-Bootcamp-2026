@@ -21,8 +21,8 @@ export default function Sections(){
   };
 
   return (
-    <div id="center">
-      <div>
+    <div id="center" className="page-grid">
+      <div className="card">
         <h2>Create Section</h2>
         <form onSubmit={handleCreate} className="form-row">
           <input placeholder="Code" value={form.Code} onChange={e=>setForm(f=>({...f, Code:e.target.value}))} />
@@ -31,13 +31,13 @@ export default function Sections(){
             <option value="">-- Program (optional) --</option>
             {programs.map(p=> <option key={p.id ?? p.Id} value={p.id ?? p.Id}>{p.programName ?? p.ProgramName}</option>)}
           </select>
-          <button type="submit" disabled={loading}>Create</button>
+          <button className="btn btn-primary" type="submit" disabled={loading}>Create</button>
         </form>
       </div>
 
-      <div>
+      <div className="card table-card">
         <h2>Sections</h2>
-        <table>
+        <table className="data-table">
           <thead><tr><th>Code</th><th>Year</th><th>Program</th><th></th></tr></thead>
           <tbody>
             {sections.map(s=> (
@@ -45,7 +45,7 @@ export default function Sections(){
                 <td>{s.code ?? s.Code}</td>
                 <td>{s.year ?? s.Year}</td>
                 <td>{(s.program?.programName ?? s.programName) || (s.ProgramName) || (s.programId ?? s.ProgramId) }</td>
-                <td><button onClick={()=>handleDelete(s.id ?? s.Id)}>Delete</button></td>
+                <td><button className="btn btn-danger btn-sm" onClick={()=>handleDelete(s.id ?? s.Id)}>Delete</button></td>
               </tr>
             ))}
           </tbody>
