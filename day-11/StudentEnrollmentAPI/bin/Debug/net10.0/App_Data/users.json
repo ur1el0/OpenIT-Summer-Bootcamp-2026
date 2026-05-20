@@ -8,5 +8,10 @@
     "UserName": "kurt",
     "PasswordHash": "AQAAAAIAAYagAAAAEHgZIqh5zT6I8QH8PAOuDYr/DfkdklL9uOBTpuLCPoyraOEQYz9XevHwvghImrsorA==",
     "CreatedAt": "2026-05-20T06:08:39.1588665Z"
+  },
+  {
+    "UserName": "roos",
+    "PasswordHash": "AQAAAAIAAYagAAAAEOtt9XIo\u002BqcOpKxxt/HGyFRc0kMfjOP7su83vphAwRWv64z5vzvpx3YNg/JHrnIKoQ==",
+    "CreatedAt": "2026-05-20T06:56:55.0747529Z"
   }
 ]

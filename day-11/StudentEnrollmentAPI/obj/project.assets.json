@@ -2240,24 +2240,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kurt\\.nuget\\packages\\": {}
+    "C:\\Users\\CL3\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kurt\\roosc\\bootcamp\\OpenIT-Summer-Bootcamp-2026\\day-11\\StudentEnrollmentAPI\\StudentEnrollmentAPI.csproj",
+      "projectUniqueName": "C:\\Users\\CL3\\zano-openit-bootcamp\\day-11\\StudentEnrollmentAPI\\StudentEnrollmentAPI.csproj",
       "projectName": "StudentEnrollmentAPI",
-      "projectPath": "C:\\Users\\kurt\\roosc\\bootcamp\\OpenIT-Summer-Bootcamp-2026\\day-11\\StudentEnrollmentAPI\\StudentEnrollmentAPI.csproj",
-      "packagesPath": "C:\\Users\\kurt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kurt\\roosc\\bootcamp\\OpenIT-Summer-Bootcamp-2026\\day-11\\StudentEnrollmentAPI\\obj\\",
+      "projectPath": "C:\\Users\\CL3\\zano-openit-bootcamp\\day-11\\StudentEnrollmentAPI\\StudentEnrollmentAPI.csproj",
+      "packagesPath": "C:\\Users\\CL3\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\CL3\\zano-openit-bootcamp\\day-11\\StudentEnrollmentAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\kurt\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\CL3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -44,7 +44,7 @@ POST {{StudentEnrollmentAPI_HostAddress}}/api/students
 Content-Type: application/json
 
 {
-	"firstName": "Mika",
+	"firstName": "Kuyrt",
 	"lastName": "Cada",
 	"year": 1,
 	"gender": "Male",

@@ -225,7 +225,7 @@ const ProgramsTab = () => {
     return (
       <div className="page-grid">
         <div className="card">
-          <h2>Programs Management</h2>
+          <h2>Programs</h2>
           <form onSubmit={handleCreate} className="form-row">
             <input placeholder="Program name" value={name} onChange={e=>setName(e.target.value)} />
             <button className="btn btn-primary" type="submit" disabled={loading}>
@@ -281,7 +281,7 @@ const SectionsTab = () => {
     return (
       <div className="page-grid">
         <div className="card">
-          <h2>Sections Management</h2>
+          <h2>Sections</h2>
           <form onSubmit={handleCreate} className="form-row">
             <input placeholder="Section Code (e.g. IT-101)" value={code} onChange={e=>setCode(e.target.value)} />
             <select value={programId} onChange={e=>setProgramId(e.target.value)} required>
