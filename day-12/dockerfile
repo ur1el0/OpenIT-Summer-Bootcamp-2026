@@ -1,0 +1,27 @@
+FROM node:20-alpine AS frontend-build
+
+WORKDIR /app
+
+COPY studentenrollment/package*.json ./
+COPY studentenrollment/ ./
+RUN npm install
+RUN npm run build
+
+
+# Build backend
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
+COPY StudentEnrollmentAPI/StudentEnrollmentAPI.csproj ./
+RUN dotnet restore StudentEnrollmentAPI.csproj
+COPY StudentEnrollmentAPI/ ./
+RUN dotnet publish -c Release -o /app/publish
+
+
+# Runtime
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/publish .
+COPY --from=frontend-build /app/dist ./wwwroot
+ENV ASPNETCORE_URLS=http://+:80
+EXPOSE 80
+ENTRYPOINT ["dotnet", "StudentEnrollmentAPI.dll"]

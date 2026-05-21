@@ -1,0 +1,17 @@
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\appsettings.Development.json
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\appsettings.json
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\App_Data\users.json
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\StudentEnrollmentApi.Tests\obj\project.assets.json
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\StudentEnrollmentApi.Tests\obj\StudentEnrollmentApi.Tests.csproj.nuget.dgspec.json
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\StudentEnrollmentAPI.dll
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\StudentEnrollmentAPI.runtimeconfig.json
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\StudentEnrollmentAPI.pdb
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\Microsoft.EntityFrameworkCore.dll
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\Microsoft.OpenApi.dll
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\Npgsql.dll
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\CL3\zano-openit-bootcamp\day-12\StudentEnrollmentAPI\publish_test\StudentEnrollmentAPI.deps.json

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.testing.platform\1.9.1\buildTransitive\net9.0\Microsoft.Testing.Platform.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.testing.platform\1.9.1\buildTransitive\net9.0\Microsoft.Testing.Platform.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.testing.platform.msbuild\1.9.1\buildTransitive\Microsoft.Testing.Platform.MSBuild.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.testing.platform.msbuild\1.9.1\buildTransitive\Microsoft.Testing.Platform.MSBuild.targets')" />
+    <Import Project="$(NuGetPackageRoot)xunit.v3.core.mtp-v1\3.2.2\buildTransitive\xunit.v3.core.mtp-v1.targets" Condition="Exists('$(NuGetPackageRoot)xunit.v3.core.mtp-v1\3.2.2\buildTransitive\xunit.v3.core.mtp-v1.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\10.0.8\buildTransitive\net8.0\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\10.0.8\buildTransitive\net8.0\Microsoft.Extensions.Logging.Abstractions.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.options\10.0.8\buildTransitive\net8.0\Microsoft.Extensions.Options.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.options\10.0.8\buildTransitive\net8.0\Microsoft.Extensions.Options.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.configuration.binder\10.0.8\buildTransitive\netstandard2.0\Microsoft.Extensions.Configuration.Binder.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.configuration.binder\10.0.8\buildTransitive\netstandard2.0\Microsoft.Extensions.Configuration.Binder.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.testplatform.testhost\17.14.1\build\net8.0\Microsoft.TestPlatform.TestHost.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.testplatform.testhost\17.14.1\build\net8.0\Microsoft.TestPlatform.TestHost.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.codecoverage\17.14.1\build\netstandard2.0\Microsoft.CodeCoverage.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.codecoverage\17.14.1\build\netstandard2.0\Microsoft.CodeCoverage.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.net.test.sdk\17.14.1\build\net8.0\Microsoft.NET.Test.Sdk.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.net.test.sdk\17.14.1\build\net8.0\Microsoft.NET.Test.Sdk.targets')" />
+    <Import Project="$(NuGetPackageRoot)coverlet.collector\6.0.4\build\netstandard2.0\coverlet.collector.targets" Condition="Exists('$(NuGetPackageRoot)coverlet.collector\6.0.4\build\netstandard2.0\coverlet.collector.targets')" />
+  </ImportGroup>
+</Project>
